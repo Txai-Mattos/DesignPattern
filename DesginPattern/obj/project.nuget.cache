@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "5UgI/Vo7NZDuYfQzmdJJgEHb7lWchVxf10jV8SKv+g2Q8G+m8+rblcfIBS7FBj8D0d/nc/dTU/CLBCt8cHE+fA==",
+  "success": true,
+  "projectFilePath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\DesginPattern\\DesginPattern.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

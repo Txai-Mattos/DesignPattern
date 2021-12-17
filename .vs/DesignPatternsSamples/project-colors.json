@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "27b8af08-957d-45f8-8572-01b4b38aaa75": {
+      "ProjectGuid": "27b8af08-957d-45f8-8572-01b4b38aaa75",
+      "DisplayName": "ConsoleAPP",
+      "ColorIndex": 0
+    },
+    "90d88f3a-7842-4c9e-97ac-abcd475f6446": {
+      "ProjectGuid": "90d88f3a-7842-4c9e-97ac-abcd475f6446",
+      "DisplayName": "CreationalPatterns",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

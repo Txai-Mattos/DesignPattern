@@ -1,0 +1,92 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "CreationalPatterns/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CreationalPatterns.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CreationalPatterns.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CreationalPatterns/1.0.0": {
+      "type": "project",
+      "path": "../CreationalPatterns/CreationalPatterns.csproj",
+      "msbuildProject": "../CreationalPatterns/CreationalPatterns.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "CreationalPatterns >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\ConsoleAPP.csproj",
+      "projectName": "ConsoleAPP",
+      "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\ConsoleAPP.csproj",
+      "packagesPath": "C:\\Users\\txai.mattos\\.nuget\\packages\\",
+      "outputPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\txai.mattos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/AMBEV-SA/AMBEV-WMS/_packaging/Wms.Infrastructure/nuget/v3/index.json": {},
+        "https://pkgs.dev.azure.com/AMBEV-SA/AMBEV-WMS/_packaging/Wms.Service.Infrastructure/nuget/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\CreationalPatterns.csproj": {
+              "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\CreationalPatterns.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
