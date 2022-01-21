@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CreationalPatterns.Builder.Entities
 {
@@ -20,19 +21,22 @@ namespace CreationalPatterns.Builder.Entities
         }
 
         public Guid Dna { get; }
-        public string Name { get; set; }
-        public EColor Color { get; set; }
-        public IList<Wing> Wings { get; set; }
-        public IList<Head> Heads { get; set;}
-        public int Age { get; set; }
-        public string Tail { get; set; }
-        public DateTime? EvolutionData { get; set; }
-        public bool Master { get; set; }
-        public string Feet { get; set; }
+        public string Name { get; private set; }
+        public EColor Color { get; private set; }
+        public IList<Wing> Wings { get; private set; }
+        public IList<Head> Heads { get; private set;}
+        public int Age { get; private set; }
+        public string Tail { get; private set; }
+        public DateTime? EvolutionData { get; private set; }
+        public bool Master { get; private set; }
+        public string Feet { get; private set; }
 
         public override string ToString()
-        {
-            return $"Dragão - Dna:{Dna}, Name:{Name}, Color:{Color}, Age:{Age}, Tail:{Tail}, EvolutionData:{EvolutionData}, Master:{Master}, Feet:{Feet}";
-        }
+            => string.Join("\n",$"Dragão - Dna:{Dna}, Name:{Name}, Color:{Color}, Age:{Age}, Tail:{Tail}, EvolutionData:{EvolutionData}, Master:{Master}, Feet:{Feet}",
+                string.Join("\n", Heads.Select(x => x.ToString())),
+                string.Join("\n", Wings.Select(x => x.ToString()))
+                );
+                
+        
     }
 }

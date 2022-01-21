@@ -2,17 +2,20 @@
 {
     public class Wing
     {
-        public Wing(EColor color, int velocity, int highestAltitude, string horn)
+        public Wing(EColor color, int velocity, int highestAltitude)
         {
             Color = color;
             Velocity = velocity;
             HighestAltitude = highestAltitude;
-            Horn = horn;
         }
 
-        public EColor Color { get; set; }
-        public int Velocity { get; set; }
-        public int HighestAltitude { get; set; }
-        public string Horn { get; set; }
+        public EColor Color { get; private set; }
+        public int Velocity { get; private set; }
+        public int HighestAltitude { get; private set; }
+
+        public override string ToString()
+        {
+            return $"Wing - Color:{Color}, Velocity:{Velocity}Km/h, HighestAltitude:{HighestAltitude}Mts";
+        }
     }
 }

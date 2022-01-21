@@ -1,6 +1,7 @@
 ﻿using CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
 using CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
 using CreationalPatterns.Builder.Entities;
+using CreationalPatterns.Builder.Entities.Builders;
 using CreationalPatterns.FactoryMethod;
 using CreationalPatterns.FactoryMethod.Entites.Concrete.PC;
 using System;
@@ -11,13 +12,12 @@ namespace ConsoleAPP
     {
         public static void Main(string[] args)
         {
-           RunFactoryMethodSample();
-           RunAbstractFactorySample();
-           // RunBuilderSample();
+            RunFactoryMethodSample();
+            RunAbstractFactorySample();
+            RunBuilderSample();
+
             Console.ReadKey();
         }
-
-
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -62,21 +62,64 @@ namespace ConsoleAPP
             Console.WriteLine(factory.CreateAirplane());
             Console.WriteLine(factory.CreateCar());
             Console.WriteLine(factory.CreateShip());
-        } 
+        }
         #endregion
 
+        #region Builder
         private static void RunBuilderSample()
         {
-            var builder = new DragonBuilder();
-            builder.WithName("But")
-                    .WithColor(EColor.Green)
-                    .WithFeet("Grande")
-                    .WithMaster(true);
+            Register(true, nameof(RunBuilderSample));
 
+            WithoutDirectorSample();
 
-            Console.WriteLine(builder.Build());
+            WithDirectorSample();
 
+            Register(true, nameof(RunBuilderSample));
         }
+
+        private static void WithoutDirectorSample()
+        {
+            //Create Dragon Builder            
+            var dragonBuilder = new DragonBuilder();
+
+            //Assembly dragon parts
+            dragonBuilder.WithName("But")
+                   .WithColor(EColor.Black)
+                   .WithFeet("Bigest")
+                   .WithMaster(true);
+            //create wing builder and build the wing
+            var wing =
+                new WingBuilder()
+                    .WithColor(EColor.Green)
+                    .WithVelocity(200)
+                    .WithHighestAltitude(800)
+                    .Build();
+            //using headBuild nested into dragon builder
+            dragonBuilder
+                .WithHead(x =>
+                            x.WithColor(EColor.Blue)
+                            .WithPersonality("Sad")
+                            .WithPower("fire"));
+            dragonBuilder
+                .WithHead(x =>
+                            x.WithColor(EColor.Red)
+                            .WithPersonality("Wise")
+                            .WithHorn(3)
+                            .WithPower("Ice"));
+
+            //pass wing to dragon builder and build dragon
+            var dragon = dragonBuilder.WithWing(wing).Build();
+
+            Console.WriteLine("Without Director Sample:\n" + dragon);
+        }
+
+        private static void WithDirectorSample()
+        {
+            var director = new DragonTrainer(new DragonBuilder());
+
+            Console.WriteLine("\nWith Director Sample:\n" + director.CreateSmallerEarthDragon("Caçula"));
+        }
+        #endregion
 
 
         private static void Register(bool start, string method)
