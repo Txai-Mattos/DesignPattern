@@ -64,7 +64,7 @@ namespace CreationalPatterns.Builder.Entities
             return this;
         }
 
-        //Recebendo o "HeadBuilder" e contruindo dentro construido fora
+        //Getting the "HeadBuilder" and building the "Head" inside the "DragonBuilder"
         public DragonBuilder WithHead(Action<HeadBuilder> lazyBuilder)
         {
             var HeadBuilder = new HeadBuilder();            
@@ -74,7 +74,7 @@ namespace CreationalPatterns.Builder.Entities
             return this;
         }
 
-        //Recebendo o "Wing"´já construido fora
+        //Getting the "Wing" already built outside of "DragonBuilder"
         public DragonBuilder WithWing(Wing wing)
         {
             if (_wings == default || !_wings.Any())

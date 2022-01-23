@@ -28,8 +28,14 @@ All content is fictitious for study purposes only
      - Concrete Factories
        - PoliceVehicleFactory
        - SportVehicleFactory
-  
 
 
-
-
+## Builder
+  - Sample Name: RunBuilderSample
+  - Way to assemble complex objects "products" by parts
+  - Can get different kind of "products" using the same Builder Interface, but in this case, Build() method need in concrets builders. With products have a common interface or abract class Build() should be in builders interface.
+  - Sample    
+    - Builders: DragonBuilder, WingBuilder, HeadBuild
+      - Build Method: *Builder.Build()
+    - Products: Dragon, Head, Wing
+    - Director(Optional): DragonTrainer
