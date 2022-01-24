@@ -4,6 +4,8 @@ using CreationalPatterns.Builder.Entities;
 using CreationalPatterns.Builder.Entities.Builders;
 using CreationalPatterns.FactoryMethod;
 using CreationalPatterns.FactoryMethod.Entites.Concrete.PC;
+using CreationalPatterns.Prototype.Entities;
+using CreationalPatterns.Prototype.Interfaces;
 using System;
 
 namespace ConsoleAPP
@@ -12,9 +14,11 @@ namespace ConsoleAPP
     {
         public static void Main(string[] args)
         {
+            //Creational patterns
             RunFactoryMethodSample();
             RunAbstractFactorySample();
             RunBuilderSample();
+            RunPrototypeSample();
 
             Console.ReadKey();
         }
@@ -115,12 +119,45 @@ namespace ConsoleAPP
 
         private static void WithDirectorSample()
         {
+            //director
             var director = new DragonTrainer(new DragonBuilder());
 
             Console.WriteLine("\nWith Director Sample:\n" + director.CreateSmallerEarthDragon("Caçula"));
         }
         #endregion
 
+        #region Prototype
+        private static void RunPrototypeSample()
+        {
+            Register(true, nameof(RunPrototypeSample));
+
+            var InfringementCassada = new Infringement()
+            {
+                Cod = "502-91",
+                Name = "DIRIGIR VEICULO COM CNH CASSADA",
+                TimeToExpiration = 20
+            };
+
+            IPenalty prototype = new TrafficPenalty(InfringementCassada);
+
+            //DeepClone - Creates new aggregates object references
+            var deepClone = prototype.DeepCopy();
+            //Update Clone field competencyDate
+            deepClone.Initializer(DateTime.Now);
+
+            //ShallowClone - shared agregate references with prototype
+            var shallowClone = prototype.ShallowCopy();
+
+            //Change Prototype agregation            
+            prototype.Infringement.Name = "Updated - DIRIGIR VEICULO COM CNH CASSADA";
+
+            Console.WriteLine("Prototype:\n" + prototype);
+            Console.WriteLine("\nDeep Cloned:\n" + deepClone);
+            Console.WriteLine("\nShallow Clone:\n" + shallowClone);
+
+            Register(false, nameof(RunPrototypeSample));
+        } 
+        #endregion
 
         private static void Register(bool start, string method)
         {

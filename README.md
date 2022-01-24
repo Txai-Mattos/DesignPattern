@@ -39,3 +39,23 @@ All content is fictitious for study purposes only
       - Build Method: *Builder.Build()
     - Products: Dragon, Head, Wing
     - Director(Optional): DragonTrainer
+
+## Prototype
+- Sample Name: RunPrototypeSample
+- Way to create copy of exists object, even without knowing concrete class or yours private properties
+- Can exists a prototype register to control all prototype objects when required
+- Sample
+  - Prototype Object:
+    - prototype
+  - Clones
+    - deepClone: Made with DeepCopy
+    - shallowClone: Made with ShallowCopy
+  - Concrete
+    - TrafficPenalty
+      - .Initialize(): If client code need config same state to clone.
+      - .DeepCopy(): Implements DeepCopy
+      - .ShallowCopy(): Implements ShallowCopy
+    - Infringement
+      - Clone: sample using IClonnable interface to make shallow copy
+    - Abstract
+      - IPenalty: Cliente code only khown object interface and can make clones 
