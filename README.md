@@ -59,3 +59,18 @@ All content is fictitious for study purposes only
       - Clone: sample using IClonnable interface to make shallow copy
     - Abstract
       - IPenalty: Cliente code only khown object interface and can make clones 
+
+## Prototype
+- Sample Name: RunSingletonSample
+- Ways to make only one Instance of a class to be used by all application
+- Some developers consider it an anti pattern
+- several ways to do this implementation
+-  C# dependency injection makes its automatic to you
+   -  only use .AddSingleton()
+- Sample
+  - Singleton
+    - FileServer
+  - Get unique instance method
+    - FileServer.GetInstance
+  - Thread safe by static prop intialized
+  

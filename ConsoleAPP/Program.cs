@@ -6,7 +6,13 @@ using CreationalPatterns.FactoryMethod;
 using CreationalPatterns.FactoryMethod.Entites.Concrete.PC;
 using CreationalPatterns.Prototype.Entities;
 using CreationalPatterns.Prototype.Interfaces;
+using CreationalPatterns.Singleton.Entitie;
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ConsoleAPP
 {
@@ -19,6 +25,7 @@ namespace ConsoleAPP
             RunAbstractFactorySample();
             RunBuilderSample();
             RunPrototypeSample();
+            RunSingletonSample();
 
             Console.ReadKey();
         }
@@ -154,6 +161,29 @@ namespace ConsoleAPP
             Console.WriteLine("Prototype:\n" + prototype);
             Console.WriteLine("\nDeep Cloned:\n" + deepClone);
             Console.WriteLine("\nShallow Clone:\n" + shallowClone);
+
+            Register(false, nameof(RunPrototypeSample));
+        }
+        #endregion
+
+        #region Singleton
+        private static void RunSingletonSample()
+        {
+            Register(true, nameof(RunPrototypeSample));
+
+            int[] threads = new int[1000];
+            var fsReturnedInstances = new ConcurrentBag<FileServer>();
+
+            //Running parallel threads for thread safe verification
+            Parallel.ForEach(threads, new ParallelOptions() { MaxDegreeOfParallelism = 10 }, i =>
+            {
+                var fs = FileServer.GetInstance();
+                fsReturnedInstances.Add(fs);
+                fs.WriteFile();
+            });
+
+            if (fsReturnedInstances.Any(x => x.Id == fsReturnedInstances.Last().Id))
+                Console.WriteLine($"\n Todas as {fsReturnedInstances.Count} instâncias de {nameof(FileServer)} obtidas foram a mesma grantindo o padrão singleton");
 
             Register(false, nameof(RunPrototypeSample));
         } 
