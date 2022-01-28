@@ -5,7 +5,7 @@ namespace CreationalPatterns.FactoryMethod
     public abstract class SOBase : ISytemOperation
     {
         private string LoggedPerson { get; set; }
-        
+
         public abstract string GetLicence();
         public virtual void Login(string loggedPerson)
         {

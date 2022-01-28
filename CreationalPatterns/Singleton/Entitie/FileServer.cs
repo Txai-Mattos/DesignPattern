@@ -22,6 +22,6 @@ namespace CreationalPatterns.Singleton.Entitie
         //Get Unique Instance of Singleton
         public static FileServer GetInstance()
             => _intance;
-        
+
     }
 }

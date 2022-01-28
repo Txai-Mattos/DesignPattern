@@ -11,17 +11,17 @@ namespace CreationalPatterns.AbstractFactory.Entities.Concrete.Factories
     {
         public override Airplane CreateAirplane()
         {
-            return new SportAirplane(12,5000,2500);
+            return new SportAirplane(12, 5000, 2500);
         }
 
         public override Car CreateCar()
         {
-            return new SportCar(2,6);
+            return new SportCar(2, 6);
         }
 
         public override Ship CreateShip()
         {
-            return new SportShip(4,50,true);
+            return new SportShip(4, 50, true);
         }
     }
 }

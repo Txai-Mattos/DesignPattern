@@ -3,7 +3,7 @@
     public class Windows : SOBase
     {
         public override string GetLicence()
-            =>  "Paga";
+            => "Paga";
 
 
     }

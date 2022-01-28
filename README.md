@@ -3,6 +3,11 @@ Console project with design patterns samples
 
 All content is fictitious for study purposes only
 
+# Startup Project
+- DesignPatternSamples.ConsoleAPP
+- Patterns index are there
+- Is samples Client
+
 # Creational Patterns
  Ways create objects with flexibily and reuse incremented
 ## Factory Method
@@ -60,7 +65,7 @@ All content is fictitious for study purposes only
     - Abstract
       - IPenalty: Cliente code only khown object interface and can make clones 
 
-## Prototype
+## Singleton
 - Sample Name: RunSingletonSample
 - Ways to make only one Instance of a class to be used by all application
 - Some developers consider it an anti pattern
@@ -74,3 +79,21 @@ All content is fictitious for study purposes only
     - FileServer.GetInstance
   - Thread safe by static prop intialized
   
+  # Structural patterns
+  how to assemble  objects and classes to generate larger structures while keeping the structures flexible and efficient
+
+  ## Adapter
+  - Sample Name: RunAdapterSample
+  - acts as an adapter to allow incompatible interfaces communication, Adapter server as a wrapper to client code interface to convert resquest into a form that to incompatible interface can work
+  - Sample
+    - Adaptee
+      - QuarterConsolidade: Concrete adapter that implements ISale
+    - Adapter
+      - SaleProcessAdapter: Concrete adaptee interface that implements IQuarterConsolidade
+    - Interfaces
+      - ISale: Domain interface that client khow comunicate
+      - IQuarterConsolidade: Another Interface that client don't khow how comunicate
+    - Dtos
+      - SaleDto: Client khow how use
+      - QuarterDto: Client dont khow how use
+    

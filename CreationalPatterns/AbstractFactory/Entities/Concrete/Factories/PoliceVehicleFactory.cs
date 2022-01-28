@@ -11,17 +11,17 @@ namespace CreationalPatterns.AbstractFactory.Entities.Concrete.Factories
     {
         public override Airplane CreateAirplane()
         {
-            return new PoliceAirplane(100,8000,500);
+            return new PoliceAirplane(100, 8000, 500);
         }
 
         public override Car CreateCar()
         {
-            return new PoliceCar(18,4);
+            return new PoliceCar(18, 4);
         }
 
         public override Ship CreateShip()
         {
-            return new PoliceShip(20,80,false);
+            return new PoliceShip(20, 80, false);
         }
     }
 }

@@ -3,6 +3,6 @@
     public class Linux : SOBase
     {
         public override string GetLicence()
-            =>  "De Grátis";
+            => "De Grátis";
     }
 }

@@ -67,7 +67,7 @@ namespace CreationalPatterns.Builder.Entities
         //Getting the "HeadBuilder" and building the "Head" inside the "DragonBuilder"
         public DragonBuilder WithHead(Action<HeadBuilder> lazyBuilder)
         {
-            var HeadBuilder = new HeadBuilder();            
+            var HeadBuilder = new HeadBuilder();
             lazyBuilder(HeadBuilder);
 
             _heads.Add(HeadBuilder.Build());
@@ -79,7 +79,7 @@ namespace CreationalPatterns.Builder.Entities
         {
             if (_wings == default || !_wings.Any())
                 _wings = new List<Wing>();
-            
+
             _wings.Add(wing);
             return this;
         }

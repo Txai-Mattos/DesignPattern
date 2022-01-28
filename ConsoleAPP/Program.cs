@@ -7,10 +7,10 @@ using CreationalPatterns.FactoryMethod.Entites.Concrete.PC;
 using CreationalPatterns.Prototype.Entities;
 using CreationalPatterns.Prototype.Interfaces;
 using CreationalPatterns.Singleton.Entitie;
+using StructuralPatterns.Adapter.Entities.Adaptees;
+using StructuralPatterns.Adapter.Entities.Adapters;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +26,9 @@ namespace ConsoleAPP
             RunBuilderSample();
             RunPrototypeSample();
             RunSingletonSample();
+
+            //Structural patterns
+            RunAdapterSample();
 
             Console.ReadKey();
         }
@@ -52,7 +55,6 @@ namespace ConsoleAPP
             }
         }
         #endregion
-
         #region Abstract Factory
         private static void RunAbstractFactorySample()
         {
@@ -75,7 +77,6 @@ namespace ConsoleAPP
             Console.WriteLine(factory.CreateShip());
         }
         #endregion
-
         #region Builder
         private static void RunBuilderSample()
         {
@@ -132,7 +133,6 @@ namespace ConsoleAPP
             Console.WriteLine("\nWith Director Sample:\n" + director.CreateSmallerEarthDragon("Caçula"));
         }
         #endregion
-
         #region Prototype
         private static void RunPrototypeSample()
         {
@@ -165,17 +165,16 @@ namespace ConsoleAPP
             Register(false, nameof(RunPrototypeSample));
         }
         #endregion
-
         #region Singleton
         private static void RunSingletonSample()
         {
             Register(true, nameof(RunPrototypeSample));
 
-            int[] threads = new int[1000];
+            int[] threads = new int[100];
             var fsReturnedInstances = new ConcurrentBag<FileServer>();
 
             //Running parallel threads for thread safe verification
-            Parallel.ForEach(threads, new ParallelOptions() { MaxDegreeOfParallelism = 10 }, i =>
+            Parallel.ForEach(threads, i =>
             {
                 var fs = FileServer.GetInstance();
                 fsReturnedInstances.Add(fs);
@@ -186,7 +185,35 @@ namespace ConsoleAPP
                 Console.WriteLine($"\n Todas as {fsReturnedInstances.Count} instâncias de {nameof(FileServer)} obtidas foram a mesma grantindo o padrão singleton");
 
             Register(false, nameof(RunPrototypeSample));
-        } 
+        }
+        #endregion
+
+        #region Adpter
+        private static void RunAdapterSample()
+        {
+            Register(true, nameof(RunAdapterSample));
+
+            //IQuarterConsolidade = Interface do serviço a ser adptado a que o nosso cliente não consegue construir os parâmetros para comunicar com ela
+            //QuarterConsolidade = Classe concreta do serviço a ser adpatado
+            IQuarterConsolidade adaptee = new QuarterConsolidade();
+
+            //ISale = target é a interface de dominio que o nosso client conhece
+            //SaleProcessAdapter = é o adaptador, a classe concrete que será chamada e fará o vinculo com o objeto adaptado que recebeu no contrutor
+            ISale target = new SaleProcessAdapter(adaptee);
+
+            //SaleDto = o objeto do dominio que o cliente conhece e pode passar para o target, .Load() retornando uma lista de salesDto
+            var list = SaleDto.Load();
+
+            //Exibindo o objeto de conhecimento do cliente que será passado ao adptador
+            Console.WriteLine($"Sales \n{string.Join('\n', list)}");
+
+            //Chamando o adaptador para consolidar a lista de vendas
+            var consolidadeSales = target.ProcessSaleConsolidate(list);
+
+            //Exibição do resultado consolidado pela interface adpatada IQuarterConsolidade para uso do cliente, sem necessidade dele conhecer detalhes dessa comunicação
+            Console.WriteLine($"\nConsolidade \n{string.Join('\n', consolidadeSales)}");
+            Register(false, nameof(RunAdapterSample));
+        }
         #endregion
 
         private static void Register(bool start, string method)

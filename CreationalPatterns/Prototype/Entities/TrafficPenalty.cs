@@ -37,7 +37,8 @@ namespace CreationalPatterns.Prototype.Entities
         }
 
         //Can create a initializer method to cliente Customize some fields of clone
-        public void Initializer(DateTime competencyDate) {
+        public void Initializer(DateTime competencyDate)
+        {
             Id = Guid.NewGuid();
             CompetencyDate = competencyDate;
         }
@@ -52,8 +53,8 @@ namespace CreationalPatterns.Prototype.Entities
         {
             return $"TrafficPenalty - Id:{Id}, Description:{Description}, Value:{Value:n2}, CompetencyDate:{CompetencyDate}, {Infringement};";
         }
-        
-        
+
+
     }
-    
+
 }
