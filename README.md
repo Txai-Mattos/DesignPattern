@@ -4,12 +4,13 @@ Console project with design patterns samples
 All content is fictitious for study purposes only
 
 # Startup Project
-- DesignPatternSamples.ConsoleAPP
-- Patterns index are there
-- Is samples Client
+  - DesignPatternSamples.ConsoleAPP
+  - Patterns index are there
+  - Is samples Client
 
 # Creational Patterns
  Ways create objects with flexibily and reuse incremented
+
 ## Factory Method
 - Sample Name: RunFactoryMethodSample
 - Lazy create by subclasses
@@ -96,4 +97,19 @@ All content is fictitious for study purposes only
     - Dtos
       - SaleDto: Client khow how use
       - QuarterDto: Client dont khow how use
+   ## Bridge
+   - Sample Name: RunAdapterSample
+   - Tem a finalidade de desacoplar uma abstração de sua implementação, de modo que as duas possam variar de forma independente
+   - Possibilita alteração da implementação da abstração em tempo de execução
+   - Permite a criação de hieráquias indepentes para abstração e implementação de forma que ao extender uma não necessite alterar a outra, respeitando o principio aberto-fechado
+   - Pode ser usado quando necessitamos extender a classe em mais de uma dimensão, nestes casos podemos extrair uma dessas dimensões para outra hieráquia e usar o bridge para estruturar.
+     - no caso em exemplo, poderíamos estender "residence" e criar apartamento.
+   - Exemplo:
+     - Classes de Abstração(um dos lados da "ponte")
+       - Residence - Abstração
+       - House - Abstração refinada
+     - Classes de implementação(outro lado da "ponte")
+       - ISecurity - Interface das classes de implementação
+       - GuardDog, MmaFighter - Implementações da interface ISecurity
+
     

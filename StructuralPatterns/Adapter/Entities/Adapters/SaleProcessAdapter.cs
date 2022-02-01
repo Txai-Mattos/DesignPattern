@@ -1,4 +1,5 @@
-﻿using StructuralPatterns.Adapter.Entities.Adaptees;
+﻿using CrossCutting.Extensions;
+using StructuralPatterns.Adapter.Entities.Adaptees;
 using System.Collections.Generic;
 using System.Linq;
 

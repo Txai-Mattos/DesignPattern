@@ -7,6 +7,8 @@ using CreationalPatterns.FactoryMethod.Entites.Concrete.PC;
 using CreationalPatterns.Prototype.Entities;
 using CreationalPatterns.Prototype.Interfaces;
 using CreationalPatterns.Singleton.Entitie;
+using DesignPatternSamples.StructuralPatterns.Bridge.GofAbstractionSide;
+using DesignPatternSamples.StructuralPatterns.Bridge.GofImplementationSide;
 using StructuralPatterns.Adapter.Entities.Adaptees;
 using StructuralPatterns.Adapter.Entities.Adapters;
 using System;
@@ -29,9 +31,12 @@ namespace ConsoleAPP
 
             //Structural patterns
             RunAdapterSample();
+            RunBrigdeSample();
 
             Console.ReadKey();
         }
+
+        
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -213,6 +218,42 @@ namespace ConsoleAPP
             //Exibição do resultado consolidado pela interface adpatada IQuarterConsolidade para uso do cliente, sem necessidade dele conhecer detalhes dessa comunicação
             Console.WriteLine($"\nConsolidade \n{string.Join('\n', consolidadeSales)}");
             Register(false, nameof(RunAdapterSample));
+        }
+        #endregion
+        #region Bridge
+        private static void RunBrigdeSample()
+        {
+            Register(true, nameof(RunBrigdeSample));
+
+            //Implementation Abstraction = ISecurity
+            //Implementation Concrete = GuardDog
+            ISecurity caramelo = new GuardDog();
+            ISecurity naldo = new MmaFighter();
+
+            //Abstraction = Residence
+            //Abstraction Refined = House
+            Residence residence = new House(false, caramelo, false);
+
+            //Usando a abstração para alterar comportamentos relacionados a casa e de forma transparente
+            //ao usuário acionado a implementação para realizar as operações que lhe competem
+            residence.Lock();            
+            residence.Open();
+            residence.ResidentArrived();
+            residence.Open();
+
+            //O padrão também permite a alteração implementação em tempo de execução
+            residence.ChangeSecurity(naldo);
+            Console.WriteLine($"\nClient - Alterado a segurança de {nameof(GuardDog)} para {nameof(MmaFighter)} \n");
+            //Atraves da nova implementação
+            //Usando a abstração para alterar comportamentos relacionados a casa e de forma transparente
+            //ao usuário acionado a implementação para realizar as operações que lhe competem
+            residence.Lock();
+            residence.ResidentLeft();
+            residence.Open();
+            residence.ResidentArrived();
+            residence.Open();
+
+            Register(false, nameof(RunBrigdeSample));
         }
         #endregion
 
