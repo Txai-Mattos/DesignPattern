@@ -1,4 +1,4 @@
-﻿namespace DesignPatternSamples.StructuralPatterns.Bridge.GofImplementationSide
+﻿namespace DesignPatternSamples.StructuralPatterns.Bridge.ImplementationSide
 {
     public interface ISecurity
     {

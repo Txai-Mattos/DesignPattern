@@ -7,8 +7,9 @@ using CreationalPatterns.FactoryMethod.Entites.Concrete.PC;
 using CreationalPatterns.Prototype.Entities;
 using CreationalPatterns.Prototype.Interfaces;
 using CreationalPatterns.Singleton.Entitie;
-using DesignPatternSamples.StructuralPatterns.Bridge.GofAbstractionSide;
-using DesignPatternSamples.StructuralPatterns.Bridge.GofImplementationSide;
+using DesignPatternSamples.StructuralPatterns.Bridge.AbstractionSide;
+using DesignPatternSamples.StructuralPatterns.Bridge.ImplementationSide;
+using DesignPatternSamples.StructuralPatterns.Composite;
 using StructuralPatterns.Adapter.Entities.Adaptees;
 using StructuralPatterns.Adapter.Entities.Adapters;
 using System;
@@ -32,11 +33,10 @@ namespace ConsoleAPP
             //Structural patterns
             RunAdapterSample();
             RunBrigdeSample();
+            RunCompositeSample();
 
             Console.ReadKey();
         }
-
-        
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -236,7 +236,7 @@ namespace ConsoleAPP
 
             //Usando a abstração para alterar comportamentos relacionados a casa e de forma transparente
             //ao usuário acionado a implementação para realizar as operações que lhe competem
-            residence.Lock();            
+            residence.Lock();
             residence.Open();
             residence.ResidentArrived();
             residence.Open();
@@ -254,6 +254,47 @@ namespace ConsoleAPP
             residence.Open();
 
             Register(false, nameof(RunBrigdeSample));
+        }
+        #endregion
+
+        #region Composite
+        private static void RunCompositeSample()
+        {
+            Register(true, nameof(RunCompositeSample));
+
+            IComponent room, house;
+            GenerateHouseStrucure(out room, out house);
+
+            //Abrindo todos os obejtos compostos e não através da mesma interface
+            Console.WriteLine("Abrindo todos os objetos");
+            Console.WriteLine(house.Open());
+
+            //Fechando somente o equivalente a um composite da arvore, e todos os seus filhos pela mesma interface
+            Console.WriteLine("\n\nFechando somente o composite: quarto");
+            Console.WriteLine(room.Close());
+
+            //Demostrando como ficou a estrutura final da arvore
+            Console.WriteLine("\n\nExibindo a casa");
+            Console.WriteLine(house.Show());
+
+
+            Register(false, nameof(RunCompositeSample));
+        }
+        private static void GenerateHouseStrucure(out IComponent room, out IComponent house)
+        {
+            //Criando o composite: generalbathroom com as folhas: Window, Door            
+            IComponent generalbathroom = new Room("Banheiro - Principal");
+            generalbathroom.Add(new Window("Veneziana"), new Door("Porta"));
+
+            //Criando o composite: room com os filhos: 2x Window, Door, e o composite:suitbathroom com os filhos dele
+            IComponent suitBathroom = new Room("Banheiro - Secundário");
+            suitBathroom.Add(new Window("Veneziana"), new Door("Porta de banheiro"));
+            room = new Room("Quarto");
+            room.Add(new Window("Janela Esquerda"), new Window("Janela Frente"), new Door("Porta quarto"), suitBathroom);
+
+            //Criando nosso compose raiz:house e adicionando os filhos:Door, room, generalbathroom
+            house = new Room("Casa");
+            house.Add(new Door("Porta da casa"), room, generalbathroom);
         }
         #endregion
 

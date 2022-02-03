@@ -1,7 +1,7 @@
-﻿using DesignPatternSamples.StructuralPatterns.Bridge.GofImplementationSide;
+﻿using DesignPatternSamples.StructuralPatterns.Bridge.ImplementationSide;
 using System;
 
-namespace DesignPatternSamples.StructuralPatterns.Bridge.GofAbstractionSide
+namespace DesignPatternSamples.StructuralPatterns.Bridge.AbstractionSide
 {
     public class House : Residence
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DesignPatternSamples.StructuralPatterns.Bridge.GofImplementationSide
+namespace DesignPatternSamples.StructuralPatterns.Bridge.ImplementationSide
 {
     public class MmaFighter : ISecurity
     {
@@ -22,6 +22,6 @@ namespace DesignPatternSamples.StructuralPatterns.Bridge.GofImplementationSide
         {
             Console.WriteLine($"{nameof(RaiseTheAlarme)} - Segurança: MmaFighter chamou a policia");
         }
-        
+
     }
 }

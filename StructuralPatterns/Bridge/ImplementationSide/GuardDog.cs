@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DesignPatternSamples.StructuralPatterns.Bridge.GofImplementationSide
+namespace DesignPatternSamples.StructuralPatterns.Bridge.ImplementationSide
 {
     public class GuardDog : ISecurity
     {
