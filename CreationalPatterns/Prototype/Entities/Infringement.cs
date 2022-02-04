@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CreationalPatterns.Prototype.Entities
+namespace DesignPatternSamples.CreationalPatterns.Prototype.Entities
 {
     //Using ICloneable interface
     public class Infringement : ICloneable
@@ -18,7 +18,7 @@ namespace CreationalPatterns.Prototype.Entities
         public object Clone()
         {
             //Shallow Copy
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
 
         public override string ToString()

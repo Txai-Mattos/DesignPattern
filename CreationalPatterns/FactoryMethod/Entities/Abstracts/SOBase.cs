@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CreationalPatterns.FactoryMethod
+namespace DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Abstracts
 {
     public abstract class SOBase : ISytemOperation
     {

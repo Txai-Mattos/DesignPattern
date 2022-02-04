@@ -1,6 +1,7 @@
-﻿using System;
+﻿using DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Abstracts;
+using System;
 
-namespace CreationalPatterns.FactoryMethod
+namespace DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Concrete.SO
 {
     public class Mac : SOBase
     {

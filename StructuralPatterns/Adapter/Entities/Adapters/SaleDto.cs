@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StructuralPatterns.Adapter.Entities.Adapters
+namespace DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adapters
 {
     public class SaleDto
     {

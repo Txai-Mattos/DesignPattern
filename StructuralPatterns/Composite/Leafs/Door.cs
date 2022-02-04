@@ -1,4 +1,6 @@
-﻿namespace DesignPatternSamples.StructuralPatterns.Composite
+﻿using DesignPatternSamples.StructuralPatterns.Composite.Abstractions;
+
+namespace DesignPatternSamples.StructuralPatterns.Composite.Leafs
 {
     public class Door : Leaf
     {

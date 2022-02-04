@@ -1,4 +1,4 @@
-﻿namespace CreationalPatterns.FactoryMethod
+﻿namespace DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Abstracts
 {
     public interface ISytemOperation
     {

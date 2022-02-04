@@ -1,4 +1,4 @@
-﻿namespace StructuralPatterns.Adapter.Entities.Adaptees
+﻿namespace DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adaptees
 {
     public class QuarterDto
     {

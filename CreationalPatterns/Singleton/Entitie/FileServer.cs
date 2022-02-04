@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CreationalPatterns.Singleton.Entitie
+namespace DesignPatternSamples.CreationalPatterns.Singleton.Entitie
 {
     //Singleton Class
     public class FileServer

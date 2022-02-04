@@ -1,10 +1,10 @@
-﻿using CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
-using CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles;
-using CreationalPatterns.AbstractFactory.Entities.Concrete.Airplanes;
-using CreationalPatterns.AbstractFactory.Entities.Concrete.Cars;
-using CreationalPatterns.AbstractFactory.Entities.Concrete.Ships;
+﻿using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
+using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles;
+using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Airplanes;
+using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Cars;
+using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Ships;
 
-namespace CreationalPatterns.AbstractFactory.Entities.Concrete.Factories
+namespace DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories
 {
     //Abstract Factory Concrete
     public class SportVehicleFactory : VehicleFactory

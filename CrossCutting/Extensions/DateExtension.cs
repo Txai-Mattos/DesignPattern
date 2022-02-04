@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CrossCutting.Extensions
+namespace DesignPatternSamples.CrossCutting.Extensions
 {
     public static class DateExtension
     {

@@ -113,7 +113,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - GuardDog, MmaFighter: Implementações da interface ISecurity
     
 ## Composite
-- Sample Name: RunABridgeSample
+- Sample Name: RunCompositeSample
 - Útil quando o modelo da aplicação deve poder ser representado em árvore, pois sua estrutura aparenta uma árvore de cabeça para baixo
 - A principal intenção é permitir ao código cliente trabalhar com objetos simples e compostos utilizando da mesma interface, sem necessidade de saber o tipo do objeto e qual sua profundidade na hierarquia. Reduz a complexidade do código cliente.
 - Facilita o princípio aberto/fechado
@@ -139,3 +139,29 @@ how to assemble objects and classes to generate larger structures while keeping 
     - Leaf: Abstração
     - Door: Classe concreta
     - Window: Classe concreta
+
+## Decorator
+- Sample Name: RunDecoratorSample
+- Permite estender um objeto para adicionar para ele novas responsabilidades em tempo de execução, tornando-se uma alternativa a extensão de objetos via herança
+- Usa agregação e recursividade
+- Age como se fosse uma "pele" para o objeto
+- Os decoradores podem agir antes e/ou depois da chamada para o objeto envolvido
+- Não quebra a lógica do objeto original, os decoradores são adicionados a ele formando uma estrutura de camadas.
+- Pode usar vários decoradores de vez o que aumenta as possibilidades
+- Um decorador não consegue parar o fluxo, ele obrigatoriamente passará por todos os decoradores atribuído e o objeto "envolvido"
+- O objeto que foi decorado não tem ciência disso, nem os métodos que o chamam
+- Tem a abordagem use quando for necessário
+  - O cliente que controla quando os comportamentos adicionais serão atribuídos
+- Atenção
+  - O objeto quando decorado não tem a mesma referência de memória do objeto sem decorar
+  - Pode ser difícil implementar sem depender da ordem na pilha dos decoradores
+- Estrutura
+  - Component 
+    - Interface comum ao objeto que será envolvido e o "Decorator" deve ser simples
+  - ConcreteComponent: O objeto que implementa "Component" e pode ser decorado, necessário já ter um comportamento padrão
+  - Decorator
+    - Classe base para os decoradores implementa "Component"
+    - Tem a agregação para o "Component" com a instância do "ConcreteComponent"
+    - Encaminha todas as requisições para os métodos da agregação
+  - ConcreteDecorator: Implementação dos decoradores executam os novos comportamentos antes e/ou depois repassam para o mesmo método na "Decorator"
+  - Exemplo

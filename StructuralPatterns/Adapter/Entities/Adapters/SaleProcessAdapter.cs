@@ -1,9 +1,9 @@
-﻿using CrossCutting.Extensions;
-using StructuralPatterns.Adapter.Entities.Adaptees;
+﻿using DesignPatternSamples.CrossCutting.Extensions;
+using DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adaptees;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace StructuralPatterns.Adapter.Entities.Adapters
+namespace DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adapters
 {
     // SaleProcessAdapter = O adaptador que torna a interface Adaptada compatível com a interface do dominio
     public class SaleProcessAdapter : ISale

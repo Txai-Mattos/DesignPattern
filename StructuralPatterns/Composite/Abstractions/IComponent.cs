@@ -1,4 +1,4 @@
-﻿namespace DesignPatternSamples.StructuralPatterns.Composite
+﻿namespace DesignPatternSamples.StructuralPatterns.Composite.Abstractions
 {
     public interface IComponent
     {

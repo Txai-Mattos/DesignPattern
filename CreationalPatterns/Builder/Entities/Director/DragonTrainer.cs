@@ -1,6 +1,7 @@
-﻿using CreationalPatterns.Builder.Entities.Builders;
+﻿using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
+using DesignPatternSamples.CrossCutting.Enums;
 
-namespace CreationalPatterns.Builder.Entities
+namespace DesignPatternSamples.CreationalPatterns.Builder.Entities.Director
 {
     //Director
     public class DragonTrainer

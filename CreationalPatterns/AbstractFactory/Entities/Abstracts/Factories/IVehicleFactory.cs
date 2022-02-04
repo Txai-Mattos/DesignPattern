@@ -1,6 +1,6 @@
-﻿using CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles;
+﻿using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles;
 
-namespace CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories
+namespace DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories
 {
     public interface IVehicleFactory
     {

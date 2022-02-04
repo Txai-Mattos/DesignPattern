@@ -1,4 +1,6 @@
-namespace CreationalPatterns.Builder.Entities.Builders
+using DesignPatternSamples.CrossCutting.Enums;
+
+namespace DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders
 {
     public class HeadBuilder
     {

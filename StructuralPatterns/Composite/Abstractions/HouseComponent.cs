@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DesignPatternSamples.StructuralPatterns.Composite
+namespace DesignPatternSamples.StructuralPatterns.Composite.Abstractions
 {
     public abstract class HouseComponent : IComponent
     {

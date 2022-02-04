@@ -1,7 +1,7 @@
-﻿using CreationalPatterns.Prototype.Interfaces;
+﻿using DesignPatternSamples.CreationalPatterns.Prototype.Interfaces;
 using System;
 
-namespace CreationalPatterns.Prototype.Entities
+namespace DesignPatternSamples.CreationalPatterns.Prototype.Entities
 {
     public class TrafficPenalty : IPenalty
     {
@@ -26,14 +26,14 @@ namespace CreationalPatterns.Prototype.Entities
         //DeepCopy method
         public IPenalty DeepCopy()
         {
-            var Clone = (TrafficPenalty)this.MemberwiseClone();
-            Clone.Infringement = (Infringement)this.Infringement.Clone();
+            var Clone = (TrafficPenalty)MemberwiseClone();
+            Clone.Infringement = (Infringement)Infringement.Clone();
 
             return Clone;
         }
         public IPenalty ShallowCopy()
         {
-            return (IPenalty)this.MemberwiseClone();
+            return (IPenalty)MemberwiseClone();
         }
 
         //Can create a initializer method to cliente Customize some fields of clone

@@ -1,4 +1,6 @@
-﻿namespace CreationalPatterns.Builder.Entities
+﻿using DesignPatternSamples.CrossCutting.Enums;
+
+namespace DesignPatternSamples.CreationalPatterns.Builder.Entities
 {
     public class Wing
     {

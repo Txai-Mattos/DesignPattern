@@ -1,23 +1,28 @@
-﻿using CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
-using CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
-using CreationalPatterns.Builder.Entities;
-using CreationalPatterns.Builder.Entities.Builders;
-using CreationalPatterns.FactoryMethod;
-using CreationalPatterns.FactoryMethod.Entites.Concrete.PC;
-using CreationalPatterns.Prototype.Entities;
-using CreationalPatterns.Prototype.Interfaces;
-using CreationalPatterns.Singleton.Entitie;
+﻿using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
+using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
+using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
+using DesignPatternSamples.CreationalPatterns.Builder.Entities.Director;
+using DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Abstracts;
+using DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Concrete.PC;
+using DesignPatternSamples.CreationalPatterns.Prototype.Entities;
+using DesignPatternSamples.CreationalPatterns.Prototype.Interfaces;
+using DesignPatternSamples.CreationalPatterns.Singleton.Entitie;
+using DesignPatternSamples.CrossCutting.Enums;
+using DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adaptees;
+using DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adapters;
 using DesignPatternSamples.StructuralPatterns.Bridge.AbstractionSide;
 using DesignPatternSamples.StructuralPatterns.Bridge.ImplementationSide;
-using DesignPatternSamples.StructuralPatterns.Composite;
-using StructuralPatterns.Adapter.Entities.Adaptees;
-using StructuralPatterns.Adapter.Entities.Adapters;
+using DesignPatternSamples.StructuralPatterns.Composite.Composites;
+using DesignPatternSamples.StructuralPatterns.Composite.Leafs;
+using DesignPatternSamples.StructuralPatterns.Decorator.Components;
+using DesignPatternSamples.StructuralPatterns.Decorator.Decorators;
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
+using IComponentComposite = DesignPatternSamples.StructuralPatterns.Composite.Abstractions.IComponent;
 
-namespace ConsoleAPP
+namespace DesignPatternSamples.ConsoleAPP
 {
     public static class Program
     {
@@ -34,9 +39,11 @@ namespace ConsoleAPP
             RunAdapterSample();
             RunBrigdeSample();
             RunCompositeSample();
+            RunDecoratorSample();
 
             Console.ReadKey();
         }
+
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -256,14 +263,12 @@ namespace ConsoleAPP
             Register(false, nameof(RunBrigdeSample));
         }
         #endregion
-
         #region Composite
         private static void RunCompositeSample()
         {
             Register(true, nameof(RunCompositeSample));
 
-            IComponent room, house;
-            GenerateHouseStrucure(out room, out house);
+            GenerateHouseStrucure(out IComponentComposite room, out IComponentComposite house);
 
             //Abrindo todos os obejtos compostos e não através da mesma interface
             Console.WriteLine("Abrindo todos os objetos");
@@ -280,14 +285,14 @@ namespace ConsoleAPP
 
             Register(false, nameof(RunCompositeSample));
         }
-        private static void GenerateHouseStrucure(out IComponent room, out IComponent house)
+        private static void GenerateHouseStrucure(out IComponentComposite room, out IComponentComposite house)
         {
             //Criando o composite: generalbathroom com as folhas: Window, Door            
-            IComponent generalbathroom = new Room("Banheiro - Principal");
+            IComponentComposite generalbathroom = new Room("Banheiro - Principal");
             generalbathroom.Add(new Window("Veneziana"), new Door("Porta"));
 
             //Criando o composite: room com os filhos: 2x Window, Door, e o composite:suitbathroom com os filhos dele
-            IComponent suitBathroom = new Room("Banheiro - Secundário");
+            IComponentComposite suitBathroom = new Room("Banheiro - Secundário");
             suitBathroom.Add(new Window("Veneziana"), new Door("Porta de banheiro"));
             room = new Room("Quarto");
             room.Add(new Window("Janela Esquerda"), new Window("Janela Frente"), new Door("Porta quarto"), suitBathroom);
@@ -295,6 +300,29 @@ namespace ConsoleAPP
             //Criando nosso compose raiz:house e adicionando os filhos:Door, room, generalbathroom
             house = new Room("Casa");
             house.Add(new Door("Porta da casa"), room, generalbathroom);
+        }
+        #endregion
+        #region Decorator
+        private static void RunDecoratorSample()
+        {
+            Register(true, nameof(RunDecoratorSample));
+
+            var component = new ConcreteComponent();
+            var decorator1 = new AfterDecorator(component);
+            var decorator2 = new BeforeDecorator(component);
+            var multiDecorator = new BeforeDecorator(new AfterDecorator(component));
+
+            //Resultados
+            Console.WriteLine("Sem Decorar");
+            component.DoSomeThing();
+            Console.WriteLine("\nDecorado com AfterDecorator");
+            decorator1.DoSomeThing();
+            Console.WriteLine("\nDecorado com BeforeDecorator");
+            decorator2.DoSomeThing();
+            Console.WriteLine("\nDecorado com AfterDecorator E BeforeDecorator");
+            multiDecorator.DoSomeThing();
+
+            Register(false, nameof(RunDecoratorSample));
         }
         #endregion
 

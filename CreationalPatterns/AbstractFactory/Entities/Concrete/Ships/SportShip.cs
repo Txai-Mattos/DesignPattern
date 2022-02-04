@@ -1,6 +1,6 @@
-﻿using CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles;
+﻿using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles;
 
-namespace CreationalPatterns.AbstractFactory.Entities.Concrete.Ships
+namespace DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Ships
 {
     public class SportShip : Ship
     {

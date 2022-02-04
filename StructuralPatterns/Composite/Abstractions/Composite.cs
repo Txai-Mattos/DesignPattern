@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DesignPatternSamples.StructuralPatterns.Composite
+namespace DesignPatternSamples.StructuralPatterns.Composite.Abstractions
 {
     public abstract class Composite : HouseComponent
     {

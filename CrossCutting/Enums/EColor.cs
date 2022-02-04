@@ -1,4 +1,4 @@
-﻿namespace CreationalPatterns.Builder.Entities
+﻿namespace DesignPatternSamples.CrossCutting.Enums
 {
     public enum EColor
     {

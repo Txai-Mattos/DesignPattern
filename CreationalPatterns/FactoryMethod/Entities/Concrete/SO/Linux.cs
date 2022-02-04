@@ -1,4 +1,6 @@
-﻿namespace CreationalPatterns.FactoryMethod
+﻿using DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Abstracts;
+
+namespace DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Concrete.SO
 {
     public class Linux : SOBase
     {

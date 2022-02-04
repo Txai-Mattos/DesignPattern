@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace StructuralPatterns.Adapter.Entities.Adaptees
+namespace DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adaptees
 {
     //QuarterConsolidade = Adaptee O concreto que será adpatada pois o cliente não conhece o "QuarterDto" que é passado
     public class QuarterConsolidade : IQuarterConsolidade

@@ -1,7 +1,7 @@
-﻿using CreationalPatterns.Prototype.Entities;
+﻿using DesignPatternSamples.CreationalPatterns.Prototype.Entities;
 using System;
 
-namespace CreationalPatterns.Prototype.Interfaces
+namespace DesignPatternSamples.CreationalPatterns.Prototype.Interfaces
 {
     public interface IPenalty
     {

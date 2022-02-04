@@ -1,4 +1,4 @@
-﻿namespace CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles
+﻿namespace DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Vehicles
 {
     public abstract class Car : Vehicle
     {

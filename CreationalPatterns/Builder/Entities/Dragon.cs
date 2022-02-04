@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DesignPatternSamples.CrossCutting.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CreationalPatterns.Builder.Entities
+namespace DesignPatternSamples.CreationalPatterns.Builder.Entities
 {
     public class Dragon
     {
