@@ -175,3 +175,29 @@ how to assemble objects and classes to generate larger structures while keeping 
 
 ## Facade
 - Nome do exemplo: RunFacadeSample
+- Fornece uma interface simples para subsistemas, bibliotecas, frameworks para tornar mais fácil o seu uso.
+  - O cliente não precisa mais saber quais classes, métodos e em qual ordem deve chama-los, basta utilizar a interface do "facade", reduzindo assim sua complexidade.
+  - Como o cliente somente precisa depender do facade, facilita o reuso
+- Útil para o uso de bibliotecas complexas
+- Melhora o desacoplamento, pois encapsula as múltiplas dependências para classes de um subsistema em uma única classe
+- O padrão facade permite a criação de "facades" adicionais para poluir a única "facade" com funcionalidades não relevantes
+  - O cliente pode chamar a facade e/ou a facade adicional de forma independente
+- Diminui impacto e complexidade para atualização/substituição do subsistema que está atrás do facade, bastando apenas alterar a implementação do facade
+- Teremos no facade somente as funcionalidades do subsistema que o cliente realmente faz uso
+- O facade pode conter os comportamentos padrões mais utilizados e somente o cliente que precisarem mais do que isso, necessitariam olhar além do facade
+- O facade pode realizar processamento, antes ou depois de chamar os subsistemas para torna-los viáveis para os clientes
+- Atenção
+  - O facade pode acabar como uma classe deus acoplado a todas as classes de uma aplicação se não for bem estruturado
+- Estrutura
+  - IFacade: interface para uso dos clientes
+  - FacadeConcreto: implementação dos IFacade que encapsula as dependência e funcionalidades do subsistema para uso do cliente
+  - Subsystem class Class: 
+    - Implementam a funcionalidade do subsistema
+    - Se encarregam do trabalho passado para elas pelo facade
+- Exemplo
+  - Facade
+    - IFacade: Interface
+    - SalaryFacade: FacadeConcreto
+  - Subsystems
+    - HumanResources: Subsystem class
+    - OfficerService: Subsystem class
