@@ -16,8 +16,11 @@ using DesignPatternSamples.StructuralPatterns.Composite.Composites;
 using DesignPatternSamples.StructuralPatterns.Composite.Leafs;
 using DesignPatternSamples.StructuralPatterns.Decorator.Components;
 using DesignPatternSamples.StructuralPatterns.Decorator.Decorators;
+using DesignPatternSamples.StructuralPatterns.Facade.Facades;
+using DesignPatternSamples.StructuralPatterns.Facade.Subsystem;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IComponentComposite = DesignPatternSamples.StructuralPatterns.Composite.Abstractions.IComponent;
@@ -40,7 +43,7 @@ namespace DesignPatternSamples.ConsoleAPP
             RunBrigdeSample();
             RunCompositeSample();
             RunDecoratorSample();
-            //RunFacadeSample();
+            RunFacadeSample();
 
             Console.ReadKey();
         }
@@ -338,9 +341,10 @@ namespace DesignPatternSamples.ConsoleAPP
         private static void RunFacadeSample()
         {
             Register(true, nameof(RunDecoratorSample));
-            
+
             //Exemplo sem o uso do facade
             ExecuteWithoutFacade();
+
             //Exemplo com o uso do facade
             ExecuteWithFacade();
 
@@ -349,12 +353,43 @@ namespace DesignPatternSamples.ConsoleAPP
 
         private static void ExecuteWithFacade()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"\n--Exemplo com o uso do Facade--");
+            //IFacade: interface simplicada para o subsistema de salarios
+            //SalaryFacade: implementação do facade
+            IFacade salaryFacade = new SalaryFacade();
+
+            //Usuário chamando metodo pelo facade, sem necessidade de conhecer
+            //nenhum detalhe das classes do subsistema
+            salaryFacade.ShowSalary("10", "123", "15");
         }
 
         private static void ExecuteWithoutFacade()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"--Exemplo sem o Facade--");
+            //Necessário conhecimento das classes do subsistema no cliente que aumenta o acoplamento
+            //Classes do subsistema de salarios: OfficerService, HumanResources
+            var _officerService = new OfficerService();
+            var _humanResources = new HumanResources();
+
+            List<string> employees = new List<string>() { "10", "123", "15" };
+
+            //O cliente tem que interagir diretamente com as classes do subsistema
+            foreach (var employee in employees)
+            {
+                int branchOffice = _officerService.GetEmployeeBranchOffice(employee);
+                int occupation = _officerService.GetEmployeeOccupation(employee);
+                if (branchOffice == default || occupation == default)
+                {
+                    Console.WriteLine($"{employee} - Não é um funcionário");
+                    continue;
+                }
+                var salary = _humanResources.GetSalary(occupation, branchOffice);
+
+                //Apesar de toda complexadide e acoplamento o uso sem o facade permite ao cliente acessar
+                //metodos para o subsistema que não estão acessíveis pelo facade
+                string employeeName = _humanResources.GetEmployeeName(employee);
+                Console.WriteLine($"Funcionário: {employee}-{employeeName}, Salario: R${salary:n2}");
+            }
         }
         #endregion
         private static void Register(bool start, string method)

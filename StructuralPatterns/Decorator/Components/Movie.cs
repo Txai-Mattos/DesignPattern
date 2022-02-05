@@ -6,6 +6,6 @@ namespace DesignPatternSamples.StructuralPatterns.Decorator.Components
     {
         public void Show()
             => Console.WriteLine($"{GetType().Name} - Exibição Padrão");
-        
+
     }
 }

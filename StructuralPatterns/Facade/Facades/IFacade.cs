@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPatternSamples.StructuralPatterns.Facade.Facades
+﻿namespace DesignPatternSamples.StructuralPatterns.Facade.Facades
 {
+    //IFacade: interface simplicada para o subsistema de salarios
     public interface IFacade
     {
+        //Expôem um comportamento simplicado padrão para a consulta de salarios
+        void ShowSalary(params string[] employees);
     }
 }

@@ -98,7 +98,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - QuarterDto: Client don’t know how use
    
 ## Bridge
-- Nome exemplo: RunBridgeSample
+- Nome do exemplo: RunBridgeSample
 - Tem a finalidade de desacoplar uma abstração de sua implementação de modo que as duas possam variar de forma independente
 - O padrão também permite que tenha somente uma implementação e uma abstração, onde se manteria útil quando precisasse alterar a implementação da abstração em tempo de execução. 
 - Permite a criação de hierarquias independentes para abstração e implementação de forma que ao estender uma não necessite alterar a outra, respeitando o princípio aberto-fechado  
@@ -113,7 +113,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - GuardDog, MmaFighter: Implementações da interface ISecurity
     
 ## Composite
-- Sample Name: RunCompositeSample
+- Nome do exemplo: RunCompositeSample
 - Útil quando o modelo da aplicação deve poder ser representado em árvore, pois sua estrutura aparenta uma árvore de cabeça para baixo
 - A principal intenção é permitir ao código cliente trabalhar com objetos simples e compostos utilizando da mesma interface, sem necessidade de saber o tipo do objeto e qual sua profundidade na hierarquia. Reduz a complexidade do código cliente.
 - Facilita o princípio aberto/fechado
@@ -141,7 +141,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - Window: Classe concreta
 
 ## Decorator
-- Sample Name: RunDecoratorSample
+- Nome do exemplo: RunDecoratorSample
 - Permite estender um objeto para adicionar para ele novas responsabilidades em tempo de execução, tornando-se uma alternativa a extensão de objetos via herança
 - Usa agregação e recursividade
 - Age como se fosse uma "pele" para o objeto
@@ -174,4 +174,4 @@ how to assemble objects and classes to generate larger structures while keeping 
     - TrailerDecorator: Decorador concreto
 
 ## Facade
-- Sample Name: RunFacadeSample
+- Nome do exemplo: RunFacadeSample
