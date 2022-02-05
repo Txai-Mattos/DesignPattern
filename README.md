@@ -148,7 +148,7 @@ how to assemble objects and classes to generate larger structures while keeping 
 - Os decoradores podem agir antes e/ou depois da chamada para o objeto envolvido
 - Não quebra a lógica do objeto original, os decoradores são adicionados a ele formando uma estrutura de camadas.
 - Pode usar vários decoradores de vez o que aumenta as possibilidades
-- Um decorador não consegue parar o fluxo, ele obrigatoriamente passará por todos os decoradores atribuído e o objeto "envolvido"
+- Um decorador não consegue parar o fluxo, ele obrigatoriamente passará por todos os decoradores atribuído e o objeto envolvido
 - O objeto que foi decorado não tem ciência disso, nem os métodos que o chamam
 - Tem a abordagem use quando for necessário
   - O cliente que controla quando os comportamentos adicionais serão atribuídos
@@ -164,4 +164,14 @@ how to assemble objects and classes to generate larger structures while keeping 
     - Tem a agregação para o "Component" com a instância do "ConcreteComponent"
     - Encaminha todas as requisições para os métodos da agregação
   - ConcreteDecorator: Implementação dos decoradores executam os novos comportamentos antes e/ou depois repassam para o mesmo método na "Decorator"
-  - Exemplo
+- Exemplo
+  - Components
+    - IComponent: Interface implementada pelos objetos que podem ser estendidos pela abstração dos decoradores
+    - Movie: Componente concreto
+  - Decoradores
+    - Decorator: Abstração
+    - PostCreditDecorator: Decorador concreto
+    - TrailerDecorator: Decorador concreto
+
+## Facade
+- Sample Name: RunFacadeSample

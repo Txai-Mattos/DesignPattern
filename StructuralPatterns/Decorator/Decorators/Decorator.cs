@@ -11,7 +11,7 @@ namespace DesignPatternSamples.StructuralPatterns.Decorator.Decorators
 
         public IComponent Component { get; set; }
 
-        public virtual void DoSomeThing()
-            => Component.DoSomeThing();
+        public virtual void Show()
+            => Component.Show();
     }
 }

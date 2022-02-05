@@ -2,6 +2,6 @@
 {
     public interface IComponent
     {
-        void DoSomeThing();
+        void Show();
     }
 }

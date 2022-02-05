@@ -40,6 +40,7 @@ namespace DesignPatternSamples.ConsoleAPP
             RunBrigdeSample();
             RunCompositeSample();
             RunDecoratorSample();
+            //RunFacadeSample();
 
             Console.ReadKey();
         }
@@ -306,26 +307,56 @@ namespace DesignPatternSamples.ConsoleAPP
         private static void RunDecoratorSample()
         {
             Register(true, nameof(RunDecoratorSample));
+            //IComponent: IComponent - Interface que deve ser implementada pelos objetos que podem ser decorados
+            //Componente Concreto: movie - O objeto que pode ser estendido pelos decoradores
+            IComponent movie = new Movie();
 
-            var component = new ConcreteComponent();
-            var decorator1 = new AfterDecorator(component);
-            var decorator2 = new BeforeDecorator(component);
-            var multiDecorator = new BeforeDecorator(new AfterDecorator(component));
+            //Decorator: Decorator - Abstração comum a todos os decoradores
+            //Decorador Concreto: postCreditDecorator - Decorador que adiciona comportamentos após a execução do comportamento padrão
+            //do Componente concreto
+            Decorator postCreditDecorator = new PostCreditDecorator(movie);
+            //Decorador Concreto: trailerDecorator - Decorador que adiciona comportamentos antes da execução do comportamento padrão
+            //do Componente concreto
+            Decorator trailerDecorator = new TrailerDecorator(movie);
+            //multiDecorator - Utilizando vários decoradores para adicionar vários comportamentos ao objeto
+            var multiDecorator = new TrailerDecorator(new PostCreditDecorator(movie));
 
             //Resultados
-            Console.WriteLine("Sem Decorar");
-            component.DoSomeThing();
-            Console.WriteLine("\nDecorado com AfterDecorator");
-            decorator1.DoSomeThing();
-            Console.WriteLine("\nDecorado com BeforeDecorator");
-            decorator2.DoSomeThing();
-            Console.WriteLine("\nDecorado com AfterDecorator E BeforeDecorator");
-            multiDecorator.DoSomeThing();
+            Console.WriteLine("--Usando o objeto sem decorar--");
+            movie.Show();
+            Console.WriteLine($"\n--Usando o objeto decorado com {nameof(PostCreditDecorator)}--");
+            postCreditDecorator.Show();
+            Console.WriteLine($"\n--Usando o objeto decorado com {nameof(TrailerDecorator)}--");
+            trailerDecorator.Show();
+            Console.WriteLine($"\n--Usando o objeto decorado com {nameof(PostCreditDecorator)} e {nameof(TrailerDecorator)}--");
+            multiDecorator.Show();
 
             Register(false, nameof(RunDecoratorSample));
         }
         #endregion
+        #region Facade
+        private static void RunFacadeSample()
+        {
+            Register(true, nameof(RunDecoratorSample));
+            
+            //Exemplo sem o uso do facade
+            ExecuteWithoutFacade();
+            //Exemplo com o uso do facade
+            ExecuteWithFacade();
 
+            Register(false, nameof(RunDecoratorSample));
+        }
+
+        private static void ExecuteWithFacade()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ExecuteWithoutFacade()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
         private static void Register(bool start, string method)
         {
             var prefix = start ? "Inicio" : "Fim";
