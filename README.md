@@ -297,3 +297,30 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
 
 ## Command
 - Nome do exemplo: RunCommandSample
+- O Command é um padrão de projeto comportamental que encapsula uma solicitação como um objeto, desta forma permitindo:
+  -  Parametrizar clientes com diferentes solicitações
+  -  Enfileirar: Colocar operações em fila, agendar sua execução ou executá-las remotamente
+  -  Registrar logs de solicitações
+  -  Meios para realizar o Desfazer/refazer das operações  
+- O comando deve ser capaz ou, pré-configurado para obter os parâmetros por conta própria.
+- Criasse uma nova classe comando para cada possível operação e liga ao remetente dependendo do comportamento desejado.
+- Os comandos se tornam uma camada intermédia conveniente que reduz o acoplamento entre as camadas GUI e de lógica do negócio
+- Um comando pode chamar o mesmo receiver mais de uma vez
+- Usar quando
+  - Você quer parametrizar objetos com operações
+  - Você quer enfileirar as operações
+  - Você quer implementar operações reversíveis
+- Estrutura
+  - Command: Interface para execução de uma operação, geralmente declara apenas um único método para executar do comando.
+  - ConcreteCommand: Define um vínculo entre um objeto receiver e uma operação
+    - Implementa o método do command delegando as respectivas operações no reciever
+  - Invoker: Pede ao comando para realizar a operação
+    - Pode está associado a mais de 1 comando    
+  - Receiver: Contém a lógica do negócio
+    - Sabe como realizar as operações vinculadas ao pedido
+    - Qualquer classe pode funcionar como um reciever
+- Exemplo
+  - Command: ICommand
+  - ConcreteCommand: AlertCommand
+  - Invoker: Invoker
+  - Receiver: PromotionService

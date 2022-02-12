@@ -1,5 +1,5 @@
 ﻿using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Abstractions;
-using System;
+using DesignPatternSamples.CrossCutting.Extensions;
 using System.Linq;
 
 namespace DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Concretes
@@ -9,11 +9,11 @@ namespace DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Concrete
     {
         public override void Execute(Context context)
         {
-            Console.WriteLine($"{GetType().Name} - Iniciando execução do nó");
+            this.WriteIntoConsole("Iniciando execução do nó");
             //Checa se não contexto tem o objetos que são tratados por ela
             if (!context.Middle.Any())
             {
-                Console.WriteLine($"{GetType().Name} - Este handler não trata o contexto, repassando!");
+                this.WriteIntoConsole("Este handler não trata o contexto, repassando!");
                 //Caso não, chama o proximo nó
                 base.Execute(context);
                 return;
@@ -22,7 +22,7 @@ namespace DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Concrete
             context.Finished.AddRange(context.Middle);
             context.Middle.RemoveAll(x => true);
 
-            Console.WriteLine($"{GetType().Name} - Contexto tratado, finalizando corrente");
+            this.WriteIntoConsole("Contexto tratado, finalizando corrente");
         }
     }
 }

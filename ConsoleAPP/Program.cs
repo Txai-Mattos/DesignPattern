@@ -1,6 +1,7 @@
 ﻿using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility;
 using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Abstractions;
 using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Concretes;
+using DesignPatternSamples.BehavioralPatterns.Command;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
 using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
@@ -55,7 +56,7 @@ namespace DesignPatternSamples.ConsoleAPP
 
             //Behavioral Patterns
             RunChainOfResponsibilitySample();
-            //RunCommandSample();
+            RunCommandSample();
             Console.ReadKey();
         }
 
@@ -511,8 +512,39 @@ namespace DesignPatternSamples.ConsoleAPP
         private static void RunCommandSample()
         {
             Register(true, nameof(RunCommandSample));
-            throw new NotImplementedException();
+
+            //Criando o Receiver
+            var receiver = new PromotionService();
+
+            //Criando o commando
+            var command = CreateCommand(receiver, new List<string>() { "Carla", "Saulo", "Lucina" }, DateTime.Now.AddDays(20), "Toys");
+
+            //Criando o Invoker
+            var invoker = new Invoker();
+            //Associando o comando ao invoker
+            invoker.SetCommand(command);
+
+            //Fazendo outras coisas
+            Console.WriteLine("\nClient fazendo outras coisas...");
+
+            //Solicitando ao comando para executar a solitiação
+            Console.WriteLine("Client sinaliza ao invoker para executar o comando\n");
+            invoker.ExecuteComand();
+
+            //Atrelando outro comando ao invoker e executando
+            Console.WriteLine("\nAtrelando outro comando ao invoker  e executando");
+            var command2 = CreateCommand(receiver, new List<string>() { "Pablo", "Eliana", "Isa" }, DateTime.Now.AddDays(10), "Beauty");
+            invoker.SetCommand(command2);
+            invoker.ExecuteComand();
+
             Register(false, nameof(RunCommandSample));
+        }
+
+        private static ICommand CreateCommand(PromotionService receiver, List<string> clients, DateTime expirationDate, string department)
+        {
+            //Criando o comando
+            var command = new AlertCommand(receiver, clients, expirationDate, department);
+            return command;
         }
         #endregion
 
