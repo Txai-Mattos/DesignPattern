@@ -2,28 +2,110 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "CreationalPatterns/1.0.0": {
+      "Bogus/34.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Bogus.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bogus.dll": {}
+        }
+      },
+      "DesignPatternSamples.BehavioralPatterns/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
-          "bin/placeholder/CreationalPatterns.dll": {}
+          "bin/placeholder/DesignPatternSamples.BehavioralPatterns.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CreationalPatterns.dll": {}
+          "bin/placeholder/DesignPatternSamples.BehavioralPatterns.dll": {}
+        }
+      },
+      "DesignPatternSamples.CreationalPatterns/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "DesignPatternSamples.CrossCutting": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DesignPatternSamples.CreationalPatterns.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DesignPatternSamples.CreationalPatterns.dll": {}
+        }
+      },
+      "DesignPatternSamples.CrossCutting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DesignPatternSamples.CrossCutting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DesignPatternSamples.CrossCutting.dll": {}
+        }
+      },
+      "DesignPatternSamples.StructuralPatterns/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "DesignPatternSamples.CrossCutting": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DesignPatternSamples.StructuralPatterns.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DesignPatternSamples.StructuralPatterns.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "CreationalPatterns/1.0.0": {
+    "Bogus/34.0.1": {
+      "sha512": "49iq7QrD0wb7V4/FcK8p3dWdJxNUbojaqK9L6KRvdikIuRjt38EsNp7QXICcYdbYw01K8BHUdxlnTNn/YX3qDA==",
+      "type": "package",
+      "path": "bogus/34.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bogus.34.0.1.nupkg.sha512",
+        "bogus.nuspec",
+        "lib/net40/Bogus.dll",
+        "lib/net40/Bogus.xml",
+        "lib/net6.0/Bogus.dll",
+        "lib/net6.0/Bogus.xml",
+        "lib/netstandard1.3/Bogus.dll",
+        "lib/netstandard1.3/Bogus.xml",
+        "lib/netstandard2.0/Bogus.dll",
+        "lib/netstandard2.0/Bogus.xml"
+      ]
+    },
+    "DesignPatternSamples.BehavioralPatterns/1.0.0": {
       "type": "project",
-      "path": "../CreationalPatterns/CreationalPatterns.csproj",
-      "msbuildProject": "../CreationalPatterns/CreationalPatterns.csproj"
+      "path": "../DesignPatternSamples.BehavioralPatterns/DesignPatternSamples.BehavioralPatterns.csproj",
+      "msbuildProject": "../DesignPatternSamples.BehavioralPatterns/DesignPatternSamples.BehavioralPatterns.csproj"
+    },
+    "DesignPatternSamples.CreationalPatterns/1.0.0": {
+      "type": "project",
+      "path": "../CreationalPatterns/DesignPatternSamples.CreationalPatterns.csproj",
+      "msbuildProject": "../CreationalPatterns/DesignPatternSamples.CreationalPatterns.csproj"
+    },
+    "DesignPatternSamples.CrossCutting/1.0.0": {
+      "type": "project",
+      "path": "../CrossCutting/DesignPatternSamples.CrossCutting.csproj",
+      "msbuildProject": "../CrossCutting/DesignPatternSamples.CrossCutting.csproj"
+    },
+    "DesignPatternSamples.StructuralPatterns/1.0.0": {
+      "type": "project",
+      "path": "../StructuralPatterns/DesignPatternSamples.StructuralPatterns.csproj",
+      "msbuildProject": "../StructuralPatterns/DesignPatternSamples.StructuralPatterns.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "CreationalPatterns >= 1.0.0"
+      "Bogus >= 34.0.1",
+      "DesignPatternSamples.BehavioralPatterns >= 1.0.0",
+      "DesignPatternSamples.CreationalPatterns >= 1.0.0",
+      "DesignPatternSamples.StructuralPatterns >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -32,9 +114,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\ConsoleAPP.csproj",
-      "projectName": "ConsoleAPP",
-      "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\ConsoleAPP.csproj",
+      "projectUniqueName": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\DesignPatternSamples.ConsoleAPP.csproj",
+      "projectName": "DesignPatternSamples.ConsoleAPP",
+      "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\DesignPatternSamples.ConsoleAPP.csproj",
       "packagesPath": "C:\\Users\\txai.mattos\\.nuget\\packages\\",
       "outputPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\obj\\",
       "projectStyle": "PackageReference",
@@ -55,8 +137,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\CreationalPatterns.csproj": {
-              "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\CreationalPatterns.csproj"
+            "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\DesignPatternSamples.CreationalPatterns.csproj": {
+              "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\DesignPatternSamples.CreationalPatterns.csproj"
+            },
+            "C:\\Estudo\\DesignerPatterns\\DesginPattern\\DesignPatternSamples.BehavioralPatterns\\DesignPatternSamples.BehavioralPatterns.csproj": {
+              "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\DesignPatternSamples.BehavioralPatterns\\DesignPatternSamples.BehavioralPatterns.csproj"
+            },
+            "C:\\Estudo\\DesignerPatterns\\DesginPattern\\StructuralPatterns\\DesignPatternSamples.StructuralPatterns.csproj": {
+              "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\StructuralPatterns\\DesignPatternSamples.StructuralPatterns.csproj"
             }
           }
         }
@@ -70,6 +158,12 @@
     "frameworks": {
       "net5.0": {
         "targetAlias": "net5.0",
+        "dependencies": {
+          "Bogus": {
+            "target": "Package",
+            "version": "[34.0.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -85,7 +179,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

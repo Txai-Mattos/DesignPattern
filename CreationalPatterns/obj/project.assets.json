@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "DesignPatternSamples.CrossCutting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DesignPatternSamples.CrossCutting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DesignPatternSamples.CrossCutting.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DesignPatternSamples.CrossCutting/1.0.0": {
+      "type": "project",
+      "path": "../CrossCutting/DesignPatternSamples.CrossCutting.csproj",
+      "msbuildProject": "../CrossCutting/DesignPatternSamples.CrossCutting.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "DesignPatternSamples.CrossCutting >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\txai.mattos\\.nuget\\packages\\": {}
@@ -13,9 +32,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\CreationalPatterns.csproj",
-      "projectName": "CreationalPatterns",
-      "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\CreationalPatterns.csproj",
+      "projectUniqueName": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\DesignPatternSamples.CreationalPatterns.csproj",
+      "projectName": "DesignPatternSamples.CreationalPatterns",
+      "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\DesignPatternSamples.CreationalPatterns.csproj",
       "packagesPath": "C:\\Users\\txai.mattos\\.nuget\\packages\\",
       "outputPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\obj\\",
       "projectStyle": "PackageReference",
@@ -35,7 +54,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CrossCutting\\DesignPatternSamples.CrossCutting.csproj": {
+              "projectPath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CrossCutting\\DesignPatternSamples.CrossCutting.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -62,7 +85,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

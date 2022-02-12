@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "pd7EaPCdqjHz/sTafSq7SkK56EM2x/ILusYa57mddET5tpVBLHXoqAJt5FrHC6QzksqQsA4TUNCL4QiunmrjJw==",
+  "dgSpecHash": "1apPE3D4RoJCBGQjPgE9SbABPebly6gAml88STkJppefeanoljP7U3excPtzENCunKTTe7RMjiQ4t9zYZVuZ+g==",
   "success": true,
-  "projectFilePath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\ConsoleAPP.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\ConsoleAPP\\DesignPatternSamples.ConsoleAPP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\txai.mattos\\.nuget\\packages\\bogus\\34.0.1\\bogus.34.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

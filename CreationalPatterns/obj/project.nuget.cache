@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m7/UO1JjkrMNURRtDbJf9ule4ajyIi4aJaA93HAh2UBZIKXxTGYsZpRTjJ0Qw4MRaf3ahvysb9BK/33BNH4K+g==",
+  "dgSpecHash": "v3FL5wG1Yr7wYISpPL88j9mFXOPLKqrZshYrzbpAicLXq3cR1J/qNvDQ9uGPtYK/QEf0vrC8VmOJRIAdUEvMNA==",
   "success": true,
-  "projectFilePath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\CreationalPatterns.csproj",
+  "projectFilePath": "C:\\Estudo\\DesignerPatterns\\DesginPattern\\CreationalPatterns\\DesignPatternSamples.CreationalPatterns.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
