@@ -353,3 +353,32 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
     - TenExpression: Traduz os símbolos da casa das dezenas
   - Context: Context
   
+## Iterator
+- Nome do exemplo: RunIteratorSample
+- A ideia principal do padrão é extrair o comportamento de travessia de uma coleção para um objeto separado chamado um "iterator"
+  - Permite percorrer os elementos de um objeto agregado sequencialmente sem expor sua representação subjacente (lista, pilha, árvore, etc.)
+- Permite executar múltiplos percursos em paralelo na mesma coleção devido ao encapsulamento de todos os detalhes da travessia no objeto “iterator”
+- O código cliente pode não ter acesso a coleção que está sendo percorrida
+  - O código cliente não necessita ter acesso/ciência da coleção que está sendo percorrida basta usar o iterator
+- Melhora a interface das listas pois extrai os métodos de percursos para o iterator
+  - Não enche a interface da coleção com métodos para os variados percursos que podem ser usados nela
+- A ideia chave desse padrão é retirar a reponsabilidade de acesso e percurso da lista e colocar no interater
+- Existe mais de uma forma de implementação do iterator (internos, externos)
+  - Externo: o controle do percurso fica no cliente, ele que chama os métodos de percursos do iterator (Pegar item atual, chamar o próximo, iniciar o percurso, ...)
+  - Interno: a interface do iterator fica mais simples e o cliente pode chama só uma operação que consolida as supracitadas dentro iterator, com isso o cliente perde um pouco de controle sobre o percurso
+- Usar quando
+  - Quer acessar o conteúdo das coleções sem acopla-las no código cliente, protegendo a coleção das interações do cliente e escondendo sua complexidade
+  - Quer ter suporte a múltiplos percursos 
+- Estrutura
+  - Iterator: Interface que declara as operações necessárias para percorrer uma coleção: buscar o próximo elemento, pegar a posição atual, recomeçar a iteração, etc.
+   - ConcreteIterator: Implementam algoritmos específicos para percorrer uma coleção
+     - Responsável por monitorar todo o progresso da travessia por conta própria
+     - Pode ter mais operações para ajudá-lo no percurso além das recorrentes (First, Next, IsDone, CurrentItem)
+   - Aggregate: Interface das coleções
+     - Descreve os métodos para obter os integradores
+   - ConcreteAggregate: Retorna a instância do ConcreteIterator apropriada para a coleção
+ - Exemplo
+   - Iterator: IIterator
+   - ConcreteIterator: ImparIterator
+   - Aggregate: IAggregate
+   - ConcreteAggregate: FruitAggregate

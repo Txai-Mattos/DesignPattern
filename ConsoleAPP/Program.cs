@@ -6,6 +6,7 @@ using DesignPatternSamples.BehavioralPatterns.Command.Receivers;
 using DesignPatternSamples.BehavioralPatterns.Interpreter;
 using DesignPatternSamples.BehavioralPatterns.Interpreter.AbstractExpressions;
 using DesignPatternSamples.BehavioralPatterns.Interpreter.TerminalExpressions;
+using DesignPatternSamples.BehavioralPatterns.Iterator.Aggregates;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
 using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
@@ -62,12 +63,11 @@ namespace DesignPatternSamples.ConsoleAPP
             RunChainOfResponsibilitySample();
             RunCommandSample();
             RunInterpreterSample();
+            RunIteratorSample();
 
 
             Console.ReadKey();
         }
-
-
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -379,7 +379,7 @@ namespace DesignPatternSamples.ConsoleAPP
             var _officerService = new OfficerService();
             var _humanResources = new HumanResources();
 
-            List<string> employees = new List<string>() { "10", "123", "15" };
+            List<string> employees = new() { "10", "123", "15" };
 
             //O cliente tem que interagir diretamente com as classes do subsistema
             foreach (var employee in employees)
@@ -579,7 +579,39 @@ namespace DesignPatternSamples.ConsoleAPP
             Register(false, nameof(RunInterpreterSample));
         }
         #endregion
+        #region Iterator
+        private static void RunIteratorSample()
+        {
+            Register(true, nameof(RunIteratorSample));
 
+            //FruitAggregate: ConcreteAggregate - Sendo criado
+            var fruitCollection = new FruitAggregate();
+            //Alimentando a collection do FruitAggregate
+            fruitCollection.AddFruit("Limão");
+            fruitCollection.AddFruit("Laranja");
+            fruitCollection.AddFruit("Morango");
+            fruitCollection.AddFruit("Ameixa");
+            fruitCollection.AddFruit("Melão");
+            fruitCollection.AddFruit("Melância");
+            fruitCollection.AddFruit("Manga");
+
+            //Obtendo o iterator para percorrer a lista fruitCollection
+            //imparIterator: um IIterator com a instancia ImparIterator
+            var imparIterator = fruitCollection.GetIterator();
+
+            //Colocando o iterator no inicio
+            imparIterator.First();
+
+            //Enquanto não chegar ao fim continua a percorrer a lista
+            while (!imparIterator.IsDone())
+            {
+                //trocar o item da lista
+                imparIterator.Next();
+            }
+
+            Register(false, nameof(RunIteratorSample));
+        }
+        #endregion
 
         private static void Register(bool start, string method)
         {

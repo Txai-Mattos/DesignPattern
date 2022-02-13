@@ -6,7 +6,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Interpreter.AbstractExpression
     //AbstractExpression: Abstração para todos os nós - opcional utilizei para não repetir código
     public abstract class AbstractExpression : IAbstractExpression
     {
-        protected Dictionary<string, int> Hexadecimal = new Dictionary<string, int>() { { "A", 10 }, { "B", 11 }, { "C", 12 }, { "D", 13 }, { "E", 14 }, { "F", 15 } };
+        protected Dictionary<string, int> Hexadecimal = new() { { "A", 10 }, { "B", 11 }, { "C", 12 }, { "D", 13 }, { "E", 14 }, { "F", 15 } };
 
         public abstract void Interpret(Context context);
 

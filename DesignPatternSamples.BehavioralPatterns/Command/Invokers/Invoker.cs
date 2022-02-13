@@ -8,10 +8,10 @@ namespace DesignPatternSamples.BehavioralPatterns.Command.Invokers
     {
         public Invoker()
         {
-            _commandsExecuted = new List<ICommand>();
+            CommandsExecuted = new List<ICommand>();
         }
         private ICommand _command;
-        private List<ICommand> _commandsExecuted { get; set; }
+        private List<ICommand> CommandsExecuted { get; set; }
         public void SetCommand(ICommand command)
         {
             this.WriteIntoConsole($"Associando o comando {command.GetType().Name} ao invoker");
@@ -23,8 +23,8 @@ namespace DesignPatternSamples.BehavioralPatterns.Command.Invokers
             this.WriteIntoConsole("O Invoker está chamando o comando");
             _command.Execute();
 
-            _commandsExecuted.Add(_command);
-            this.WriteIntoConsole($"O Invoker está armazenou o comando para histórico atualmente com {_commandsExecuted.Count} comandos");
+            CommandsExecuted.Add(_command);
+            this.WriteIntoConsole($"O Invoker está armazenou o comando para histórico atualmente com {CommandsExecuted.Count} comandos");
         }
     }
 }
