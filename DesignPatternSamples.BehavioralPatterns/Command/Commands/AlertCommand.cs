@@ -1,8 +1,9 @@
-﻿using DesignPatternSamples.CrossCutting.Extensions;
+﻿using DesignPatternSamples.BehavioralPatterns.Command.Receivers;
+using DesignPatternSamples.CrossCutting.Extensions;
 using System;
 using System.Collections.Generic;
 
-namespace DesignPatternSamples.BehavioralPatterns.Command
+namespace DesignPatternSamples.BehavioralPatterns.Command.Commands
 {
     public class AlertCommand : ICommand
     {

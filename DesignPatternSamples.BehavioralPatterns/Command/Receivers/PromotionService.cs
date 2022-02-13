@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DesignPatternSamples.BehavioralPatterns.Command
+namespace DesignPatternSamples.BehavioralPatterns.Command.Receivers
 {
     public class PromotionService
     {

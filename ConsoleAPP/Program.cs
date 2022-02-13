@@ -1,7 +1,11 @@
-﻿using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility;
-using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Abstractions;
+﻿using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Abstractions;
 using DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Concretes;
-using DesignPatternSamples.BehavioralPatterns.Command;
+using DesignPatternSamples.BehavioralPatterns.Command.Commands;
+using DesignPatternSamples.BehavioralPatterns.Command.Invokers;
+using DesignPatternSamples.BehavioralPatterns.Command.Receivers;
+using DesignPatternSamples.BehavioralPatterns.Interpreter;
+using DesignPatternSamples.BehavioralPatterns.Interpreter.AbstractExpressions;
+using DesignPatternSamples.BehavioralPatterns.Interpreter.TerminalExpressions;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
 using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
@@ -57,8 +61,13 @@ namespace DesignPatternSamples.ConsoleAPP
             //Behavioral Patterns
             RunChainOfResponsibilitySample();
             RunCommandSample();
+            RunInterpreterSample();
+
+
             Console.ReadKey();
         }
+
+
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -479,7 +488,7 @@ namespace DesignPatternSamples.ConsoleAPP
         {
             Register(true, nameof(RunChainOfResponsibilitySample));
             //Contexto, o obejto passada para ser tratado na chain
-            var context = new Context();
+            var context = new BehavioralPatterns.ChainOfResponsibility.Context();
             //Contador para o laço
             int count = 1;
             //IHandler: interface comum a toda chain
@@ -539,12 +548,35 @@ namespace DesignPatternSamples.ConsoleAPP
 
             Register(false, nameof(RunCommandSample));
         }
-
         private static ICommand CreateCommand(PromotionService receiver, List<string> clients, DateTime expirationDate, string department)
         {
             //Criando o comando
             var command = new AlertCommand(receiver, clients, expirationDate, department);
             return command;
+        }
+        #endregion
+        #region Interpreter
+        private static void RunInterpreterSample()
+        {
+            Register(true, nameof(RunInterpreterSample));
+            //expression: Definição da expressão
+            var expression = "1A8";
+            //context: o contexto a ser interpretado
+            var context = new Context(expression);
+
+            //Expressões terminais, uma para cada simbolo da linguagem, nesse caso são as casa decimais
+            var oneExpression = new OneExpression();
+            var tenExpression = new TenExpression();
+            var hundredExpression = new HundredExpression();
+            //Criação da arvore de analise de acordo com a expressão que sera tratada, pode ser mudada
+            List<IAbstractExpression> tree = new() { hundredExpression, tenExpression, oneExpression };
+
+            //Execução da interpretação na arvore
+            tree.ForEach(e => e.Interpret(context));
+
+            Console.WriteLine($"\n Interpretado {expression} em hexadecimal para {context.Output} em decimal");
+
+            Register(false, nameof(RunInterpreterSample));
         }
         #endregion
 

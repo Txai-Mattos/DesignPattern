@@ -1,7 +1,8 @@
-﻿using DesignPatternSamples.CrossCutting.Extensions;
+﻿using DesignPatternSamples.BehavioralPatterns.Command.Commands;
+using DesignPatternSamples.CrossCutting.Extensions;
 using System.Collections.Generic;
 
-namespace DesignPatternSamples.BehavioralPatterns.Command
+namespace DesignPatternSamples.BehavioralPatterns.Command.Invokers
 {
     public class Invoker
     {

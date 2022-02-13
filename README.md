@@ -324,3 +324,32 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - ConcreteCommand: AlertCommand
   - Invoker: Invoker
   - Receiver: PromotionService
+
+## Interpreter
+- Nome do exemplo: RunInterpreterSample
+- Dada uma linguagem, descreve como definir uma representação para a sua gramatica juntamente com um interpretador que usa a representação para interpretar sentenças dessa linguagem
+- Deve ser usado quando tem uma linguagem simples para interpretar e for possível representar sentenças da linguagem como arvores sintáticas abstratas
+- Para tirar melhor proveito:
+  - A gramatica deve ser simples: para evitarmos gramaticas complexas que são difíceis de manter devido a grande hierarquia de classes necessária para interpretá-la
+  - A eficiência é não deve ser uma preocupação crítica: os interpretadores mais eficientes normalmente não são implementados pela interpretação direta da arvore de analise sintática
+- Torna fácil mudar e estender a gramatica
+- Estrutura
+  - AbstractExpression: define a interface para execução da operação de interpretação a todos os nós da arvore sintática abstrata
+  - TerminalExpression: são os símbolos finais da gramatica não são compostos por outros AbstractExpression
+    - Implementa a operação “Interpret” associada com símbolos de terminal na gramatica
+    - Necessitada de uma instância para cada símbolo de terminal na sentença
+  - NonterminalExpression: são compostos por outros AbstractExpression
+    - Mantém variáveis de instância do tipo AbstractExpression (terminais ou outras non terminais) para cada um dos símbolos R1 a Rn.
+    - Implementa uma operação “Interpret” para símbolos não terminais na gramática. “Interpret” normalmente chama a si mesmo recursivamente nas variáveis que representam R1 a Rn
+  - Context: Contém informações que são globais ao interpretador
+    - como a expressão a ser interpretada e a situação atual da interpretação
+- Exemplo
+  - AbstractExpression
+    - IAbstractExpression: Interface como método “Interpret”
+    - AbstractExpression: Abstração - Usada para centralizar alguns dados comuns a todos os nós
+  - TerminalExpression: 
+    - HundredExpression: Traduz os símbolos da casa das centenas
+    - OneExpression: Traduz os símbolos da casa das unidades
+    - TenExpression: Traduz os símbolos da casa das dezenas
+  - Context: Context
+  
