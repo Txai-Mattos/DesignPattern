@@ -16,7 +16,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Iterator.Iterators
         {
             if ((IsImparColletion ? Colletion.Count - 1 : Colletion.Count - 2) <= Index)
             {
-                this.WriteIntoConsole("Finalizado percursso na lista");
+                this.Write("Finalizado percursso na lista");
                 return true;
             }
             return false;
@@ -30,7 +30,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Iterator.Iterators
                 return 0;
 
             Index = 0;
-            this.WriteIntoConsole($"Metodo {nameof(First)} retornado o primeiro item impar da lista ( {Colletion[Index]} ) indice: {Index + 1}");
+            this.Write($"Metodo {nameof(First)} retornado o primeiro item impar da lista ( {Colletion[Index]} ) indice: {Index + 1}");
             return Colletion[Index];
         }
 
@@ -40,7 +40,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Iterator.Iterators
                 return 0;
 
             Index += 2;
-            this.WriteIntoConsole($"Metodo {nameof(Next)} retornado o proximo item impar da lista ( {Colletion[Index]} ) indice: {Index + 1}");
+            this.Write($"Metodo {nameof(Next)} retornado o proximo item impar da lista ( {Colletion[Index]} ) indice: {Index + 1}");
             return Colletion[Index];
         }
     }

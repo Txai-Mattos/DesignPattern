@@ -382,3 +382,27 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
    - ConcreteIterator: ImparIterator
    - Aggregate: IAggregate
    - ConcreteAggregate: FruitAggregate
+
+## Mediator
+- Nome do exemplo: RunMediatorSample
+- Define um objeto (Mediator) que encapsula a forma como um conjunto de objetos interagem entre si
+  - Faz com que todas as comunicações diretas entre os objetos sejam direcionadas para o mediator tornando-as indiretas
+- Reduz o acoplamento entre objetos
+  - Agora todos os objetos só necessitam conhecer o mediator e ele redireciona as chamadas para os "colleagues" apropriados
+  - Melhora o reuso dos "colleagues" pois retira as dependências internas deles com outros objetos substituindo-os pelo mediator
+- Diminui a quantidade de subclasses de "colleagues" quando a única finalidade delas é mudar o formato como tratam os outros objetos
+  - Essa interação é movida para o mediator, bastando o "colleague" deve somente sinalizar ao mediator quando algo significante acontecer
+- Pode usar o MediatR para implementar
+- Atenção
+  - A complexidade do Mediator aumenta proporcionalmente ao tamanho/complexidade do conjunto de objetos que ele encapsula e seu crescimento, ficar atento para não o tornar um "god object"
+- Estrutura:
+  - Colleague: São as classes de negócio conhecem o mediator por sua interface
+    - Envia e recebe solicitação do mediator, não dever ter ciência dos outros Colleagues e somente falar com eles através do mediator
+  - Mediator: Interface comum aos mediator normalmente só um método que recebe a notificação e quem o está notificando
+  - ConcreteMediator: Implementam a interface Mediator
+    - Encapsula as relações entre vários componentes
+    - Implementa o comportamento cooperativo entre as classes "Colleagues", mantém referência a todos os objetos que gerencia
+  - Exemplo - Está funcional porém ainda é conceitual quando pensar em algo legal para ele eu subo
+    - Colleague:
+    - Mediator:
+    - ConcreteMediator:

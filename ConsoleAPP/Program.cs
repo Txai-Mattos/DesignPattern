@@ -7,6 +7,8 @@ using DesignPatternSamples.BehavioralPatterns.Interpreter;
 using DesignPatternSamples.BehavioralPatterns.Interpreter.AbstractExpressions;
 using DesignPatternSamples.BehavioralPatterns.Interpreter.TerminalExpressions;
 using DesignPatternSamples.BehavioralPatterns.Iterator.Aggregates;
+using DesignPatternSamples.BehavioralPatterns.Mediator.Colleagues;
+using DesignPatternSamples.BehavioralPatterns.Mediator.Mediators;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
 using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
@@ -64,10 +66,12 @@ namespace DesignPatternSamples.ConsoleAPP
             RunCommandSample();
             RunInterpreterSample();
             RunIteratorSample();
-
+            RunMediatorSample();
 
             Console.ReadKey();
         }
+
+        
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -610,6 +614,32 @@ namespace DesignPatternSamples.ConsoleAPP
             }
 
             Register(false, nameof(RunIteratorSample));
+        }
+        #endregion
+        #region Mediator
+        private static void RunMediatorSample()
+        {
+            Register(true, nameof(RunMediatorSample));
+
+            //Colleagues: Precisam acionar ações entre si quando determinados metodos são acionados
+            var colleague1 = new Colleague1();
+            var colleague2 = new Colleague2();
+            var colleague3 = new Colleague3();
+
+            //mediator: mediador encapsula a comunicação entre os objetos Colleagues fazendo que só dependam dele
+            IMediator mediator = new ConcreteMediator(colleague1, colleague2, colleague3);
+
+            //Simulando ações do cliente ao executar comportamentos dos componentes eles alertam ao mediator que por sua vez chama o obejtos que deveriam interagir com aquele evento
+            Console.WriteLine($"Cliente executando um metodo do componente {nameof(colleague1)} que por sua vez sinaliza ao mediator:\n");
+            colleague1.DoSomeThing();
+            
+            Console.WriteLine($"\nCliente executando um metodo do componente {nameof(colleague2)} que por sua vez sinaliza ao mediator:\n");
+            colleague2.DoSomeThing();
+
+            Console.WriteLine($"\nCliente executando um metodo do componente {nameof(colleague3)} que por sua vez sinaliza ao mediator:\n");
+            colleague3.DoSomeThing();
+
+            Register(false, nameof(RunMediatorSample));
         }
         #endregion
 

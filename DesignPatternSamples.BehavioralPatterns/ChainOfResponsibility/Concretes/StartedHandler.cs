@@ -9,11 +9,11 @@ namespace DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Concrete
     {
         public override void Execute(Context context)
         {
-            this.WriteIntoConsole("Iniciando execução do nó");
+            this.Write("Iniciando execução do nó");
             //Checa se não contexto tem o objetos que são tratados por ela
             if (!context.Started.Any())
             {
-                this.WriteIntoConsole("Este handler não trata o contexto, repassando!");
+                this.Write("Este handler não trata o contexto, repassando!");
                 //Caso não, chama o proximo nó
                 base.Execute(context);
                 return;
@@ -22,7 +22,7 @@ namespace DesignPatternSamples.BehavioralPatterns.ChainOfResponsibility.Concrete
             context.Middle.AddRange(context.Started);
             context.Started.RemoveAll(x => true);
 
-            this.WriteIntoConsole("Contexto tratado, finalizando corrente");
+            this.Write("Contexto tratado, finalizando corrente");
         }
     }
 }

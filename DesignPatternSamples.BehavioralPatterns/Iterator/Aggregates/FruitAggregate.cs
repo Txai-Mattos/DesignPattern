@@ -14,7 +14,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Iterator.Aggregates
 
         public IIterator GetIterator()
         {
-            this.WriteIntoConsole($"Criando interador e passando a lista ( {string.Join(",", Fruits)} ) com : {Fruits.Count} items \n");
+            this.Write($"Criando interador e passando a lista ( {string.Join(",", Fruits)} ) com : {Fruits.Count} items \n");
             return new ImparIterator<string>(Fruits);
         }
 

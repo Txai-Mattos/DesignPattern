@@ -15,7 +15,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Interpreter.TerminalExpression
             var decValue = GetDecimalValue(value, 1);
             context.Output += decValue;
 
-            this.WriteIntoConsole($"entrada {context.Expression} Saida {context.Output}");
+            this.Write($"entrada {context.Expression} Saida {context.Output}");
             context.Expression = context.Expression[1..];
         }
     }

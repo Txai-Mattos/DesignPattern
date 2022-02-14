@@ -17,12 +17,12 @@ namespace DesignPatternSamples.BehavioralPatterns.Command.Commands
             _clients = clients;
             _expirationDate = expirationDate;
             _department = department;
-            this.WriteIntoConsole($"criado comando: Clientes: {string.Join(',', _clients)}, Validade: {_expirationDate:d}, Departamento: {_department}\n");
+            this.Write($"criado comando: Clientes: {string.Join(',', _clients)}, Validade: {_expirationDate:d}, Departamento: {_department}\n");
         }
 
         public void Execute()
         {
-            this.WriteIntoConsole("O comando está chamando o receiver, passando seus respectivos parâmentros");
+            this.Write("O comando está chamando o receiver, passando seus respectivos parâmentros");
             _receiver.SendPromotionVoucher(_clients, _expirationDate, _department);
         }
     }

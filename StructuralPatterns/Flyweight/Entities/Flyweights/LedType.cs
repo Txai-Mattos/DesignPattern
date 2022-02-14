@@ -11,7 +11,7 @@ namespace DesignPatternSamples.StructuralPatterns.Flyweight.Entities.Flyweights
             Color = color;
             Power = power;
             Lifespan = lifespan;
-            this.WriteIntoConsole($"Criando novo Tipo de lampada com os valores: {this}");
+            this.Write($"Criando novo Tipo de lampada com os valores: {this}");
         }
         public EColor Color { get; }
         public int Power { get; }
@@ -20,7 +20,7 @@ namespace DesignPatternSamples.StructuralPatterns.Flyweight.Entities.Flyweights
         //Metodo do flyweight passando os dados extrínsecas por paramentro
         public void TurnOn(int x, int y)
         {
-            this.WriteIntoConsole($"Ligado na posição {x} - {y}, {this}");
+            this.Write($"Ligado na posição {x} - {y}, {this}");
         }
 
         public override string ToString()

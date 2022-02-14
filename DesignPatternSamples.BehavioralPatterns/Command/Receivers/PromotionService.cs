@@ -10,7 +10,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Command.Receivers
         {
             clients.ForEach(client =>
             {
-                this.WriteIntoConsole($"parabens {client}! você recebeu um voucher de promoção no setor {department}, com validade {expirationDate:d}");
+                this.Write($"parabens {client}! você recebeu um voucher de promoção no setor {department}, com validade {expirationDate:d}");
             });
         }
     }
