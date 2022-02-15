@@ -427,8 +427,8 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
     - Consegue restaurar seu estado fazendo uso do memento
   - Caretaker: Responsável pela custódia dos mementos par quando forem necessários
     - Não pode acessar nem alterar os estados internos do memento
-  - Exemplo:
-    - Memento: BillMemento
-      - IMemento: interface simplificada do memento para não percibe que outras classes acessem o conteudo dele
-    - Originator: Bill
-    - Caretaker: MementoManager
+- Exemplo:
+  - Memento: BillMemento
+    - IMemento: interface simplificada do memento para não percibe que outras classes acessem o conteudo dele
+  - Originator: Bill
+  - Caretaker: MementoManager
