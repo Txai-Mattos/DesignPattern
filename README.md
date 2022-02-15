@@ -402,7 +402,33 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - ConcreteMediator: Implementam a interface Mediator
     - Encapsula as relações entre vários componentes
     - Implementa o comportamento cooperativo entre as classes "Colleagues", mantém referência a todos os objetos que gerencia
-  - Exemplo - Está funcional porém ainda é conceitual quando pensar em algo legal para ele eu subo
-    - Colleague:
-    - Mediator:
-    - ConcreteMediator:
+- Exemplo - Está funcional porém ainda é conceitual quando pensar em algo legal para ele eu subo
+    - Colleague: Colleague1, Colleague2, Colleague3
+    - Mediator: IMediator
+    - ConcreteMediator: ConcreteMediator
+
+## Memento
+- Nome do exemplo: RunMementoSample
+- Permite capturar e externalizar o estado interno de um objeto sem feri seu encapsulamento (sem revelar os detalhes de sua implementação), permitindo ao objeto voltar a este estado caso necessário
+- Armazena a cópia do estado de um objeto em outro objeto especial chamado memento
+  - O conteúdo do memento só é acessível ao objeto que o construiu  
+  - Os outros objetos (inclusive o cuidador) usam uma interface limitada com acesso somente aos metadados para identificação do memento, não tem acesso aos dados internos do estado armazenado 
+- Toda ação que mude o estado do objeto e deseje ser reversível, deve salvar o estado e no "memento" e armazena-lo em um cuidador que criar como um histórico para recuperação futura.
+- O padrão delega a criação dos snapshots para o próprio objeto originador que decide o que colocará no memento.
+  - Evita a exposição de informações que somente o originador deveria acessar
+  - Simplifica o originador pois, remove dele a gestão dos snapshots das versões de seu estado
+- Atenção
+  - Se são salvos mementos com muita frequência pode ter um custo de RAM
+  - O cuidador deve acompanhar o ciclo de vida do objeto originador para remover mementos obsoletos
+- Estrutura
+  - Memento: Armazena o estado interno do objeto originador, imutável
+  - Originator: O objeto que pode ter seu estado restaurado 
+    - Cria o memento contendo um retrato do seu status atual quando for necessário
+    - Consegue restaurar seu estado fazendo uso do memento
+  - Caretaker: Responsável pela custódia dos mementos par quando forem necessários
+    - Não pode acessar nem alterar os estados internos do memento
+  - Exemplo:
+    - Memento: BillMemento
+      - IMemento: interface simplificada do memento para não percibe que outras classes acessem o conteudo dele
+    - Originator: Bill
+    - Caretaker: MementoManager

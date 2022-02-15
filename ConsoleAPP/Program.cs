@@ -9,6 +9,8 @@ using DesignPatternSamples.BehavioralPatterns.Interpreter.TerminalExpressions;
 using DesignPatternSamples.BehavioralPatterns.Iterator.Aggregates;
 using DesignPatternSamples.BehavioralPatterns.Mediator.Colleagues;
 using DesignPatternSamples.BehavioralPatterns.Mediator.Mediators;
+using DesignPatternSamples.BehavioralPatterns.Memento.Caretakers;
+using DesignPatternSamples.BehavioralPatterns.Memento.Originators;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
 using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
@@ -67,11 +69,10 @@ namespace DesignPatternSamples.ConsoleAPP
             RunInterpreterSample();
             RunIteratorSample();
             RunMediatorSample();
+            RunMementosSample();
 
             Console.ReadKey();
         }
-
-        
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -632,7 +633,7 @@ namespace DesignPatternSamples.ConsoleAPP
             //Simulando ações do cliente ao executar comportamentos dos componentes eles alertam ao mediator que por sua vez chama o obejtos que deveriam interagir com aquele evento
             Console.WriteLine($"Cliente executando um metodo do componente {nameof(colleague1)} que por sua vez sinaliza ao mediator:\n");
             colleague1.DoSomeThing();
-            
+
             Console.WriteLine($"\nCliente executando um metodo do componente {nameof(colleague2)} que por sua vez sinaliza ao mediator:\n");
             colleague2.DoSomeThing();
 
@@ -640,6 +641,41 @@ namespace DesignPatternSamples.ConsoleAPP
             colleague3.DoSomeThing();
 
             Register(false, nameof(RunMediatorSample));
+        }
+        #endregion
+        #region Mementos
+        private static void RunMementosSample()
+        {
+            Register(true, nameof(RunMementosSample));
+            //Caretaker - criando o cuidador
+            var manager = new MementoManager();
+
+            //Originator: Bill - criando a conta
+            var bill = new Bill(152.50M, "Carlos");
+
+            //Exibido o estado atual
+            Console.WriteLine("Exibindo o estado atual da conta");
+            bill.Show();
+
+            //Salvar o Estado Atual do Bill para altera-lo
+            Console.WriteLine("\nCriando o retrato da conta antes de altera-la");
+            manager.SetMemento(bill.CreateMemento());
+            bill.SetDiscount(20);
+
+            //Exibe o estado alterado
+            Console.WriteLine("\nExibindo o estado da conta após alteração, mudança no desconto");
+            bill.Show();
+
+            //Restaurando o estado antes da alteração
+            Console.WriteLine("\nResturando o estado da conta com o memento para antes do desconto");
+            var memento = manager.GetLast();
+            bill.Restore(memento);
+
+            //Exibindo o status restaurado
+            Console.WriteLine("\nExibindo o estado da conta após Restauração sem o desconto");
+            bill.Show();
+
+            Register(false, nameof(RunMementosSample));
         }
         #endregion
 

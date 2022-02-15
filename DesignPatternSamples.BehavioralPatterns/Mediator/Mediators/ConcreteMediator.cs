@@ -1,5 +1,4 @@
 ﻿using DesignPatternSamples.BehavioralPatterns.Mediator.Colleagues;
-using System;
 
 namespace DesignPatternSamples.BehavioralPatterns.Mediator.Mediators
 {
@@ -15,9 +14,9 @@ namespace DesignPatternSamples.BehavioralPatterns.Mediator.Mediators
             Colleague3.SetMediator(this);
         }
 
-        private readonly Colleague1 Colleague1; 
+        private readonly Colleague1 Colleague1;
         private readonly Colleague2 Colleague2;
-        private readonly Colleague3 Colleague3; 
+        private readonly Colleague3 Colleague3;
 
         public void Notify(object sender, string @event)
         {
