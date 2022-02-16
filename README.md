@@ -432,3 +432,32 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
     - IMemento: interface simplificada do memento para não percibe que outras classes acessem o conteudo dele
   - Originator: Bill
   - Caretaker: MementoManager
+
+## Observer
+- Nome do exemplo: RunObserverSample
+- Permite que um objeto notifique outros objetos sobre alterações em seu estado
+  - Cria um mecanismo de assinatura para que a alteração de um objeto "subject" notifique múltiplos objetos dependentes que irão se atualizar automaticamente
+  - Não limita a quantidade objetos de inscritos
+- Fornece uma maneira de assinar e cancelar a assinatura dos objetos que implementam a interface de observer
+  - Os subjects fornecem a interface para adicionar e remover assinantes a qualquer momento
+- Os observadores têm a responsabilidade de tratar ou ignorar uma notificação, podem acompanhar mais de um subject ao mesmo tempo
+- A notificação de mudança pode ser disparada pelo subject ou pelo ciente, vai depender do contexto
+- Útil quando 
+  - Mudanças no estado de um objeto precisem mudar outros objetos e estes são desconhecidos ou mudam dinamicamente
+  - Quando um observer precisar acompanhar um subject por um período definido de tempo
+- Em ambientes de relacionamentos complexos entre Observers e Subjects pode ter uma classe Change Manager para diminuir o trabalho necessário para que um observador reflita as mudanças de um subject
+  - Quando a alteração de vários subjects interdependentes reflitam no observer pode ser preferível que todos mudem seu estado e só aconteça uma notificação no final no lugar um a cada mudança intermediária
+- Estrutura
+  - Subject (Publisher): Interface para definição dos Subjects contém os métodos para gerenciamento da subscrição
+  - ConcreteSubject: Implementa o Subject
+    - Envia as notificações aos observadores e os conhece somente pela interface "Observer"
+    - Permitem a inscrição de assinantes ou remoção dos atuais
+    - Envia dado de contexto para correto tratamento do evento pelo observer
+  - Observer (Subscriber): Interface do objeto assinante normalmente contém a definição do método que vai receber a notificação do subject, pode conter parâmetros para agregar contexto
+  - ConcreteObserver: Implementa a interface Observer
+    - Implementa a interface observer para deixar seus dados consistentes com as mudanças ocorridas nos subjects
+- Exemplo
+  - Subject: ISubject
+  - ConcreteSubject: Pedido
+  - Observer: IObserver
+  - ConcreteObserver: Separation

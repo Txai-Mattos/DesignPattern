@@ -26,7 +26,7 @@ namespace DesignPatternSamples.BehavioralPatterns.Memento.Originators
 
         public void Show()
         {
-            var totalValue = Discount == 0 ? Value : (Value - (Value * Discount /100));
+            var totalValue = Discount == 0 ? Value : (Value - (Value * Discount / 100));
             this.Write($" Numero: {Number}, Devedor: {Debtor}, Valor: R${Value}, Desconto: {Discount}%, Valor Total: R${totalValue}, Data de Validade: {ExpirationDate:d}");
         }
         //Cria o memento

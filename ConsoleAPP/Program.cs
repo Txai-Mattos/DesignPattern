@@ -11,6 +11,9 @@ using DesignPatternSamples.BehavioralPatterns.Mediator.Colleagues;
 using DesignPatternSamples.BehavioralPatterns.Mediator.Mediators;
 using DesignPatternSamples.BehavioralPatterns.Memento.Caretakers;
 using DesignPatternSamples.BehavioralPatterns.Memento.Originators;
+using DesignPatternSamples.BehavioralPatterns.Observer;
+using DesignPatternSamples.BehavioralPatterns.Observer.Observers;
+using DesignPatternSamples.BehavioralPatterns.Observer.Subjects;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Abstracts.Factories;
 using DesignPatternSamples.CreationalPatterns.AbstractFactory.Entities.Concrete.Factories;
 using DesignPatternSamples.CreationalPatterns.Builder.Entities.Builders;
@@ -70,9 +73,11 @@ namespace DesignPatternSamples.ConsoleAPP
             RunIteratorSample();
             RunMediatorSample();
             RunMementosSample();
+            RunObserverSample();
 
             Console.ReadKey();
         }
+
 
         #region Factory Method
         private static void RunFactoryMethodSample()
@@ -678,7 +683,32 @@ namespace DesignPatternSamples.ConsoleAPP
             Register(false, nameof(RunMementosSample));
         }
         #endregion
+        #region Observer
+        private static void RunObserverSample()
+        {
+            Register(true, nameof(RunObserverSample));
 
+            //Criando o observador
+            var observer = new Separation();
+            //Criando o subject
+            var subject = new Pedido();
+
+            //Executando funções do subject, como são intermediárias não estou disparando a notificação que também podia ser chamad aqui diretamente pelo cliente
+            subject.AddProduct(new SaleProduct() { Description = "Uva", Amount = 16 });
+            subject.AddProduct(new SaleProduct() { Description = "Monitor", Amount = 3 });
+            subject.AddProduct(new SaleProduct() { Description = "Teclado", Amount = 1 });
+
+            //Adiconando um observador no pedido
+            Console.WriteLine("O cliente adiciona um observador no pedido");
+            subject.AddObserver(observer);
+
+            //Executando a operação que muda o estado do subject e deve avisar ao obeserver
+            Console.WriteLine("\nO pedido é finalizado");
+            subject.Complete();
+
+            Register(false, nameof(RunObserverSample));
+        }
+        #endregion
         private static void Register(bool start, string method)
         {
             var prefix = start ? "Inicio" : "Fim";
