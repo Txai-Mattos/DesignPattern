@@ -7,7 +7,6 @@ using DesignPatternSamples.CreationalPatterns.FactoryMethod.Entities.Concrete.PC
 using DesignPatternSamples.CreationalPatterns.Prototype.Entities;
 using DesignPatternSamples.CreationalPatterns.Prototype.Interfaces;
 using DesignPatternSamples.CreationalPatterns.Singleton.Entitie;
-using DesignPatternSamples.CrossCutting;
 using DesignPatternSamples.CrossCutting.Enums;
 using System;
 using System.Collections.Concurrent;
@@ -21,15 +20,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Factory Method
         public static void RunFactoryMethodSample()
         {
-            Execute.Register(true, nameof(RunFactoryMethodSample));
-
             var pc1 = new RedHatPC("PC1-RedHat");
             var pc2 = new OfficePC("PC2-Office");
             var pc3 = new ApplePC("PC3-Apple");
 
             LogIntoPcs(pc1, pc2, pc3);
-
-            Execute.Register(false, nameof(RunFactoryMethodSample));
         }
         private static void LogIntoPcs(params PersonalComputerBase[] pcs)
         {
@@ -43,8 +38,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Abstract Factory
         public static void RunAbstractFactorySample()
         {
-            Execute.Register(true, nameof(RunAbstractFactorySample));
-
             IVehicleFactory factory = new PoliceVehicleFactory();
             Console.WriteLine($"Tipo de fabrica gerada: {factory.GetType().Name}");
             CreateSameTypeVehicle(factory);
@@ -52,8 +45,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             factory = new SportVehicleFactory();
             Console.WriteLine($"\nTipo de fabrica gerada: {factory.GetType().Name}");
             CreateSameTypeVehicle(factory);
-
-            Execute.Register(false, nameof(RunAbstractFactorySample));
         }
         private static void CreateSameTypeVehicle(IVehicleFactory factory)
         {
@@ -65,13 +56,9 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Builder
         public static void RunBuilderSample()
         {
-            Execute.Register(true, nameof(RunBuilderSample));
-
             WithoutDirectorSample();
 
             WithDirectorSample();
-
-            Execute.Register(true, nameof(RunBuilderSample));
         }
 
         private static void WithoutDirectorSample()
@@ -121,8 +108,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Prototype
         public static void RunPrototypeSample()
         {
-            Execute.Register(true, nameof(RunPrototypeSample));
-
             var InfringementCassada = new Infringement()
             {
                 Cod = "502-91",
@@ -146,16 +131,12 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             Console.WriteLine("Prototype:\n" + prototype);
             Console.WriteLine("\nDeep Cloned:\n" + deepClone);
             Console.WriteLine("\nShallow Clone:\n" + shallowClone);
-
-            Execute.Register(false, nameof(RunPrototypeSample));
         }
         #endregion
         #region Singleton
         public static void RunSingletonSample()
         {
-            Execute.Register(true, nameof(RunSingletonSample));
-
-            int[] threads = new int[100];
+            int[] threads = new int[50];
             var fsReturnedInstances = new ConcurrentBag<FileServer>();
 
             //Running parallel threads for thread safe verification
@@ -168,8 +149,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
 
             if (fsReturnedInstances.Any(x => x.Id == fsReturnedInstances.Last().Id))
                 Console.WriteLine($"\n Todas as {fsReturnedInstances.Count} instâncias de {nameof(FileServer)} obtidas foram a mesma grantindo o padrão singleton");
-
-            Execute.Register(false, nameof(RunSingletonSample));
         }
         #endregion
     }

@@ -14,7 +14,9 @@ using DesignPatternSamples.BehavioralPatterns.Memento.Originators;
 using DesignPatternSamples.BehavioralPatterns.Observer;
 using DesignPatternSamples.BehavioralPatterns.Observer.Observers;
 using DesignPatternSamples.BehavioralPatterns.Observer.Subjects;
-using DesignPatternSamples.CrossCutting;
+using DesignPatternSamples.BehavioralPatterns.State;
+using DesignPatternSamples.BehavioralPatterns.Strategy;
+using DesignPatternSamples.BehavioralPatterns.Strategy.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +28,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Chain of Responsibility
         public static void RunChainOfResponsibilitySample()
         {
-            Execute.Register(true, nameof(RunChainOfResponsibilitySample));
             //Contexto, o obejto passada para ser tratado na chain
             var context = new BehavioralPatterns.ChainOfResponsibility.Context();
             //Contador para o laço
@@ -53,15 +54,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
                 Console.WriteLine(context);
                 count++;
             }
-
-            Execute.Register(false, nameof(RunChainOfResponsibilitySample));
         }
         #endregion
         #region Command
         public static void RunCommandSample()
         {
-            Execute.Register(true, nameof(RunCommandSample));
-
             //Criando o Receiver
             var receiver = new PromotionService();
 
@@ -85,8 +82,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             var command2 = CreateCommand(receiver, new List<string>() { "Pablo", "Eliana", "Isa" }, DateTime.Now.AddDays(10), "Beauty");
             invoker.SetCommand(command2);
             invoker.ExecuteComand();
-
-            Execute.Register(false, nameof(RunCommandSample));
         }
         private static ICommand CreateCommand(PromotionService receiver, List<string> clients, DateTime expirationDate, string department)
         {
@@ -98,7 +93,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Interpreter
         public static void RunInterpreterSample()
         {
-            Execute.Register(true, nameof(RunInterpreterSample));
             //expression: Definição da expressão
             var expression = "1A8";
             //context: o contexto a ser interpretado
@@ -115,15 +109,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             tree.ForEach(e => e.Interpret(context));
 
             Console.WriteLine($"\n Interpretado {expression} em hexadecimal para {context.Output} em decimal");
-
-            Execute.Register(false, nameof(RunInterpreterSample));
         }
         #endregion
         #region Iterator
         public static void RunIteratorSample()
         {
-            Execute.Register(true, nameof(RunIteratorSample));
-
             //FruitAggregate: ConcreteAggregate - Sendo criado
             var fruitCollection = new FruitAggregate();
             //Alimentando a collection do FruitAggregate
@@ -148,15 +138,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
                 //trocar o item da lista
                 imparIterator.Next();
             }
-
-            Execute.Register(false, nameof(RunIteratorSample));
         }
         #endregion
         #region Mediator
         public static void RunMediatorSample()
         {
-            Execute.Register(true, nameof(RunMediatorSample));
-
             //Colleagues: Precisam acionar ações entre si quando determinados metodos são acionados
             var colleague1 = new Colleague1();
             var colleague2 = new Colleague2();
@@ -174,14 +160,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
 
             Console.WriteLine($"\nCliente executando um metodo do componente {nameof(colleague3)} que por sua vez sinaliza ao mediator:\n");
             colleague3.DoSomeThing();
-
-            Execute.Register(false, nameof(RunMediatorSample));
         }
         #endregion
         #region Mementos
         public static void RunMementosSample()
         {
-            Execute.Register(true, nameof(RunMementosSample));
             //Caretaker - criando o cuidador
             var manager = new MementoManager();
 
@@ -209,15 +192,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             //Exibindo o status restaurado
             Console.WriteLine("\nExibindo o estado da conta após Restauração sem o desconto");
             bill.Show();
-
-            Execute.Register(false, nameof(RunMementosSample));
         }
         #endregion
         #region Observer
         public static void RunObserverSample()
         {
-            Execute.Register(true, nameof(RunObserverSample));
-
             //Criando o observador
             var observer = new Separation();
             //Criando o subject
@@ -235,8 +214,55 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             //Executando a operação que muda o estado do subject e deve avisar ao obeserver
             Console.WriteLine("\nO pedido é finalizado");
             subject.Complete();
+        }
+        #endregion
+        #region State
+        public static void RunStateSample()
+        {
+            //Criando o contexto com um estado default            
+            var context = new Water(500);
 
-            Execute.Register(false, nameof(RunObserverSample));
+            //Tentando beber a agua - Checando se possível no status
+            Console.WriteLine("\nTentando beber a agua");
+            context.Drink(200);
+
+            //Esquentando a agua - Muda o estado
+            Console.WriteLine("\nEsquentando a agua");
+            context.WarmUp();
+            Console.WriteLine("Esquentando a agua, novamente");
+            context.WarmUp();
+
+            Console.WriteLine("\nTentando beber a agua, novamente");
+            context.Drink(200);
+
+            //Esfriando a agua
+            Console.WriteLine("\nEsfriando a agua");
+            context.Freeze();
+
+            //bebendo
+            Console.WriteLine("\nTentando beber a agua, novamente");
+            context.Drink(200);
+        }
+        #endregion
+        #region Strategy
+        public static void RunStrategySample()
+        {
+            //Criando o contexto com uma estrategia inicial
+            var context = new VacationService(new TimeInCompanyStrategy());
+
+            //Exibindo a lista de funcionarios
+            context.ShowEmployees();
+            Console.WriteLine();
+            //Obtendo o proximo funcionário a sair de ferias com base nas estrategias
+            context.CalculateNextEmployeeToVacation();
+
+            //Mudando a estrategy e calculando novamente
+            context.ChangeStrategy(new FastToReturnStrategy());
+            context.CalculateNextEmployeeToVacation();
+
+            //Mudando a estrategy e calculando novamente
+            context.ChangeStrategy(new LongestOverdueStrategy());
+            context.CalculateNextEmployeeToVacation();
         }
         #endregion
     }

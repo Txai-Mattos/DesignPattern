@@ -1,5 +1,4 @@
-﻿using DesignPatternSamples.CrossCutting;
-using DesignPatternSamples.CrossCutting.Enums;
+﻿using DesignPatternSamples.CrossCutting.Enums;
 using DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adaptees;
 using DesignPatternSamples.StructuralPatterns.Adapter.Entities.Adapters;
 using DesignPatternSamples.StructuralPatterns.Bridge.AbstractionSide;
@@ -24,8 +23,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Adpter
         public static void RunAdapterSample()
         {
-            Execute.Register(true, nameof(RunAdapterSample));
-
             //IQuarterConsolidade = Interface do serviço a ser adptado a que o nosso cliente não consegue construir os parâmetros para comunicar com ela
             //QuarterConsolidade = Classe concreta do serviço a ser adpatado
             IQuarterConsolidade adaptee = new QuarterConsolidade();
@@ -45,14 +42,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
 
             //Exibição do resultado consolidado pela interface adpatada IQuarterConsolidade para uso do cliente, sem necessidade dele conhecer detalhes dessa comunicação
             Console.WriteLine($"\nConsolidade \n{string.Join('\n', consolidadeSales)}");
-            Execute.Register(false, nameof(RunAdapterSample));
         }
         #endregion
         #region Bridge
         public static void RunBrigdeSample()
         {
-            Execute.Register(true, nameof(RunBrigdeSample));
-
             //Implementation Abstraction = ISecurity
             //Implementation Concrete = GuardDog
             ISecurity caramelo = new GuardDog();
@@ -80,15 +74,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             residence.Open();
             residence.ResidentArrived();
             residence.Open();
-
-            Execute.Register(false, nameof(RunBrigdeSample));
         }
         #endregion
         #region Composite
         public static void RunCompositeSample()
         {
-            Execute.Register(true, nameof(RunCompositeSample));
-
             GenerateHouseStrucure(out IComponentComposite room, out IComponentComposite house);
 
             //Abrindo todos os obejtos compostos e não através da mesma interface
@@ -102,9 +92,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             //Demostrando como ficou a estrutura final da arvore
             Console.WriteLine("\n\nExibindo a casa");
             Console.WriteLine(house.Show());
-
-
-            Execute.Register(false, nameof(RunCompositeSample));
         }
         private static void GenerateHouseStrucure(out IComponentComposite room, out IComponentComposite house)
         {
@@ -126,7 +113,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Decorator
         public static void RunDecoratorSample()
         {
-            Execute.Register(true, nameof(RunDecoratorSample));
             //IComponent: IComponent - Interface que deve ser implementada pelos objetos que podem ser decorados
             //Componente Concreto: movie - O objeto que pode ser estendido pelos decoradores
             IComponent movie = new Movie();
@@ -151,21 +137,16 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             Console.WriteLine($"\n--Usando o objeto decorado com {nameof(PostCreditDecorator)} e {nameof(TrailerDecorator)}--");
             multiDecorator.Show();
 
-            Execute.Register(false, nameof(RunDecoratorSample));
         }
         #endregion
         #region Facade
         public static void RunFacadeSample()
         {
-            Execute.Register(true, nameof(RunFacadeSample));
-
             //Exemplo sem o uso do facade
             ExecuteWithoutFacade();
 
             //Exemplo com o uso do facade
             ExecuteWithFacade();
-
-            Execute.Register(false, nameof(RunFacadeSample));
         }
 
         private static void ExecuteWithoutFacade()
@@ -211,8 +192,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
         #region Flyweight
         public static void RunFlyweightSample()
         {
-            Execute.Register(true, nameof(RunFlyweightSample));
-
             Console.WriteLine("Criando os Flyweights: ILampTypes e os Objetos de contexto com os dados extrínsecos: Lamps");
             //LampTypeFactory - FlyweightFactory, não acha o Flyweight no pool e o adiciona lá
             //WhiteType - Instancia do flyweight concreto
@@ -240,15 +219,11 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             //Temos seis Lamps e apenas 2 flyweight deixando a aplicação mais leve
             Console.WriteLine("\nChamando comportamento dos flyweight passando os dados extrínsecos");
             sheld.TurnOnLamps();
-
-            Execute.Register(false, nameof(RunFlyweightSample));
         }
         #endregion
         #region Proxy
         public static void RunProxySample()
         {
-            Execute.Register(true, nameof(RunProxySample));
-
             string fileKey = "123456";
 
             //Criando o ConcreteSubject: Storage - Sem o uso do proxy, sem o controle do lazy load
@@ -274,9 +249,6 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             proxy.CloseFile(fileKey);
             // O proxý.DeleteFile - Adição de logs e só inicializa na hora de usar se ja não estiver, e trata bloqueio antes de passar ao objeto real - Desbloqueado
             proxy.DeleteFile(fileKey);
-
-            Execute.Register(false, nameof(RunProxySample));
-
         }
         #endregion
     }

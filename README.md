@@ -461,3 +461,50 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - ConcreteSubject: Pedido
   - Observer: IObserver
   - ConcreteObserver: Separation
+
+## State
+- Nome do exemplo: RunStateSample
+- Permite que um objeto altere seu comportamento quando seu estado interno muda. O objeto aparecerá para alterar sua classe.
+  - Altera o comportamento quando seu estado interno é alterado
+- O Padrão extrai da classe comportamentos relacionados ao estado, os adiciona em classes separadas de estado e delega a essas classes as ações relacionadas quando solicitado
+  - Tira os vários if/switch do código do objeto cuja finalidade é se comportar de maneiras diferentes a depender do estado movendo-os para seus estados específicos
+- Melhora a elegibilidade e maneabilidade do código
+  - Com os estados fora da classe contexto torna mais fácil descobri a intenção do código e estendê-lo
+- Os estados devem ser finitos e em caso da criação de um novo será necessária a criação de uma nova classe
+- O objeto que tem o estado é chamado de contexto, ele referência o estado por meio de interface comum todos os estados delegando as alterações que impactam estados para seu estado
+- Tanto o Contexto como os objetos estados podem alterar o estado atual  
+- Útil quando
+  - Você tem um objeto que se comporta de maneira diferente dependendo do seu estado atual e/ou uma classe cheia de condicionais gigantes que alteram como a classe se comporta de acordo com os valores atuais dos campos da classe
+- Quando tem código duplicado comum entre os estados pode criar uma abstração e deixar os valores comum como comportamento padrão
+- Estrutura
+  - Context: Mantem uma instância de ConcreteState que define o estado atual
+    - É a interface de conhecimento do cliente
+  - State: Define a interface para os estados com os métodos que interagem com o contexto
+  - ConcreteState: Implementa o State
+    - Cada subclasse implementa um comportamento para os métodos da interface a depender do estado que elas representem
+    - Pode mudar o Estado do Contexto
+- Exemplo
+  - Context: Water, IContext
+  - State: IState
+  - ConcreteState: Solid ,Liquid, Gas
+
+## Strategy
+- Nome do exemplo: RunStrategySample
+- Encapsula os possíveis algoritmos em uma classe strategy permitindo que variem independentes dos clientes que a utilizam
+- O contexto delega para a instância da estratégia que está vinculado para executar o algoritmo
+  - Este algoritmo pode ser substituído em tempo de execução através da substituição da instancia da estratégia
+- Reduz a complexidade e os códigos duplicados
+  - Remove da classe as condicionais relacionadas a algoritmos e criando suas classes especificas
+  - Simplifica hierarquias onde a diferença entre as subclasses é como tratam determinado algoritmo
+- Isola os detalhes na implementação do algoritmo para os objetos que o usa
+- O contexto pode passar os dados necessários para a estratégia, passar a se mesmo e a estrague busca as informações ou a estratégia ter a referência para o contexto e a estratégia buscar as informações
+  - Pode definir uma interface para a estratégia acessa-lo
+- AS estratégias se tronam totalmente independentes entre si
+- Estrutura
+  - Context: Contem a referência a estratégia concreta
+  - Strategy: Declara uma interface comum para todos os algoritmos, o contexto usa a interface para chamar o algoritmo na estratégia concreta
+  - ConcreteStrategy: implementa o algoritmo usando a interface da estratégia
+- Exemplo
+  - Context: VacationService
+  - Strategy: IStrategy
+  - ConcreteStrategy: TimeInCompanyStrategy, FastToReturnStrategy, LongestOverdueStrategy
