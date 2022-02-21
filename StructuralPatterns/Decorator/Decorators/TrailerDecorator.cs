@@ -1,5 +1,5 @@
-﻿using DesignPatternSamples.StructuralPatterns.Decorator.Components;
-using System;
+﻿using DesignPatternSamples.CrossCutting.Extensions;
+using DesignPatternSamples.StructuralPatterns.Decorator.Components;
 
 namespace DesignPatternSamples.StructuralPatterns.Decorator.Decorators
 {
@@ -10,7 +10,7 @@ namespace DesignPatternSamples.StructuralPatterns.Decorator.Decorators
         }
         public override void Show()
         {
-            Console.WriteLine($"{GetType().Name} - Exibe o trailer antes da exibição do filme");
+            this.Write("Exibe o trailer antes da exibição do filme");
             base.Show();
         }
     }

@@ -1,11 +1,10 @@
-﻿using System;
+﻿using DesignPatternSamples.CrossCutting.Extensions;
 
 namespace DesignPatternSamples.StructuralPatterns.Decorator.Components
 {
     public class Movie : IComponent
     {
         public void Show()
-            => Console.WriteLine($"{GetType().Name} - Exibição Padrão");
-
+            => this.Write("Exibição Padrão");
     }
 }

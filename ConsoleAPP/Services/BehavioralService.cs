@@ -17,6 +17,10 @@ using DesignPatternSamples.BehavioralPatterns.Observer.Subjects;
 using DesignPatternSamples.BehavioralPatterns.State;
 using DesignPatternSamples.BehavioralPatterns.Strategy;
 using DesignPatternSamples.BehavioralPatterns.Strategy.Strategies;
+using DesignPatternSamples.BehavioralPatterns.TemplateMethod.Abstracts;
+using DesignPatternSamples.BehavioralPatterns.TemplateMethod.Concretes;
+using DesignPatternSamples.BehavioralPatterns.Visitor.Elements;
+using DesignPatternSamples.BehavioralPatterns.Visitor.Visitors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -263,6 +267,44 @@ namespace DesignPatternSamples.ConsoleAPP.Services
             //Mudando a estrategy e calculando novamente
             context.ChangeStrategy(new LongestOverdueStrategy());
             context.CalculateNextEmployeeToVacation();
+        }
+        #endregion
+        #region Template Method
+        public static void RunTemplateMethodSample()
+        {
+            AbstractClass abc = new Concrete1();
+            Console.WriteLine("Concrete 1");
+            abc.TemplateMethod();
+
+            Console.WriteLine("\nConcrete 2");
+            abc = new Concrete2();
+            abc.TemplateMethod();
+        }
+        #endregion
+        #region Visitor
+        public static void RunVisitorSample()
+        {
+            //Criando um visitante concreto
+            IVisitor visitor = new ConcreteVisitor1();
+
+            //Criando a estrutura de objetos
+            var objectStructure = new List<IElement>()
+            {
+                new ConcreteEl1(),
+                new ConcreteEl2(),
+                new ConcreteEl3(),
+            };
+
+            //Percorrendo a estrutra de objetos com o ConcreteVisitor1
+            Console.WriteLine("Percorrendo a estrutra de objetos com o ConcreteVisitor1 \n");
+            objectStructure.ForEach(x => x.Accept(visitor));
+
+            //substituindo o visitante concreto por outro recem criado
+            visitor = new ConcreteVisitor2();
+
+            //Percorrendo a estrutra de objetos com o ConcreteVisitor2
+            Console.WriteLine("\nPercorrendo a estrutra de objetos com o ConcreteVisitor2 \n");
+            objectStructure.ForEach(x => x.Accept(visitor));
         }
         #endregion
     }

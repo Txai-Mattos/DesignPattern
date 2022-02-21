@@ -34,6 +34,8 @@ namespace DesignPatternSamples.ConsoleAPP
             Execute.Run(BehavioralService.RunObserverSample);
             Execute.Run(BehavioralService.RunStateSample);
             Execute.Run(BehavioralService.RunStrategySample);
+            Execute.Run(BehavioralService.RunTemplateMethodSample);
+            Execute.Run(BehavioralService.RunVisitorSample);
 
             Console.ReadKey();
         }

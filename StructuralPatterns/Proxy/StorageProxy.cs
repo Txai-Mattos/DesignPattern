@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DesignPatternSamples.CrossCutting.Extensions;
 using System.Collections.Generic;
 
 namespace DesignPatternSamples.StructuralPatterns.Proxy
@@ -9,7 +9,7 @@ namespace DesignPatternSamples.StructuralPatterns.Proxy
         //Referencia ao objeto real
         private IStorage _storage;
         //propriedade extra para controle de dados
-        private readonly Dictionary<string, bool> _filesOpened = new Dictionary<string, bool>();
+        private readonly Dictionary<string, bool> _filesOpened = new();
 
         //Realizando processamento antes  depois de chamar a requisição no objeto real, log, lazy initializa
         public void GetFile(string key)
@@ -36,8 +36,7 @@ namespace DesignPatternSamples.StructuralPatterns.Proxy
         public void DeleteFile(string key)
         {
             WriteLog($"Iniciando deleção do arquivo {key}");
-            bool opened;
-            if (_filesOpened.TryGetValue(key, out opened) && opened)
+            if (_filesOpened.TryGetValue(key, out bool opened) && opened)
             {
                 WriteLog($"Não é possível deletar o arquivo {key} pois ele está aberto!");
                 return;
@@ -50,7 +49,7 @@ namespace DesignPatternSamples.StructuralPatterns.Proxy
 
         private void WriteLog(string message)
         {
-            Console.WriteLine($"{this.GetType().Name} - {message}");
+            this.Write($"{message}");
         }
 
         //lazy initializa

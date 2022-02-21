@@ -1,51 +1,58 @@
 # Design Patterns
+
 Console project with design patterns samples
 
 All content is fictitious for study purposes only
 
 # Startup Project
+
 - DesignPatternSamples.ConsoleAPP
 - Patterns index is there
 - Samples client is here
 
 # Creational Patterns
+
  Ways create objects with flexibly and reuse incremented
 
 ## Factory Method
+
 - Sample Name: RunFactoryMethodSample
 - Lazy create by subclasses
 - Sample
-    - Factory Method: CreateSytemOperation();
-      - Abstract
-        -  PersonalComputerBase.CreateSytemOperation()
-      - Concrete
-        -  ApplePC.CreateSytemOperation()
-        -  OfficePC.CreateSytemOperation()
-        -  RedHatPC.CreateSytemOperation()
+  - Factory Method: CreateSytemOperation();
+    - Abstract
+      - PersonalComputerBase.CreateSytemOperation()
+    - Concrete
+      - ApplePC.CreateSytemOperation()
+      - OfficePC.CreateSytemOperation()
+      - RedHatPC.CreateSytemOperation()
 
 ## Abstract Factory
+
 - Sample Name: RunAbstractFactorySample
 - Lazy create by subclasses
 - To objects families
 - Sample
-  -  Object Families: (Police, Sport)
+  - Object Families: (Police, Sport)
   - Abstract Factory
-     - VehicleFactory
-   - Concrete Factories
-     - PoliceVehicleFactory
-     - SportVehicleFactory
+    - VehicleFactory
+  - Concrete Factories
+    - PoliceVehicleFactory
+    - SportVehicleFactory
 
 ## Builder
+
 - Sample Name: RunBuilderSample
 - Way to assemble complex objects "products" by parts
 - Can get different kind of "products" using the same Builder Interface, but in this case, Build() method need in concrete builders. With products have a common interface or abstract class Build() should be in builders interface.
-- Sample    
+- Sample
   - Builders: DragonBuilder, WingBuilder, HeadBuild
     - Build Method: *Builder.Build()
   - Products: Dragon, Head, Wing
   - Director (Optional): DragonTrainer
 
 ## Prototype
+
 - Sample Name: RunPrototypeSample
 - Way to create copy of exists object, even without knowing concrete class or your private properties
 - Can exists a prototype register to control all prototype objects when required
@@ -63,15 +70,16 @@ All content is fictitious for study purposes only
     - Infringement
       - Clone: sample using IClonnable interface to make shallow copy
     - Abstract
-      - IPenalty: Client code only known object interface and can make clones 
+      - IPenalty: Client code only known object interface and can make clones
 
 ## Singleton
+
 - Sample Name: RunSingletonSample
 - Ways to make only one Instance of a class to be used by all application
 - Some developers consider it an anti-pattern
 - several ways to do this implementation
--  C# dependency injection makes its automatic to you
-   -  only use ServiceCollection.AddSingleton()
+- C# dependency injection makes its automatic to you
+  - only use ServiceCollection.AddSingleton()
 - Sample
   - Singleton
     - FileServer
@@ -80,9 +88,11 @@ All content is fictitious for study purposes only
   - Thread safe by static prop initialized
   
 # Structural Patterns
+
 how to assemble objects and classes to generate larger structures while keeping the structures flexible and efficient
 
 ## Adapter
+
 - Sample Name: RunAdapterSample
 - acts as an adapter to allow incompatible interfaces communication, Adapter server as a wrapper to client code interface to convert request into a form that to incompatible interface can work
 - Sample
@@ -96,11 +106,12 @@ how to assemble objects and classes to generate larger structures while keeping 
   - Dtos
     - SaleDto: Client know how use
     - QuarterDto: Client don’t know how use
-   
+
 ## Bridge
+
 - Nome do exemplo: RunBridgeSample
 - Tem a finalidade de desacoplar uma abstração de sua implementação de modo que as duas possam variar de forma independente
-- O padrão também permite que tenha somente uma implementação e uma abstração, onde se manteria útil quando precisasse alterar a implementação da abstração em tempo de execução. 
+- O padrão também permite que tenha somente uma implementação e uma abstração, onde se manteria útil quando precisasse alterar a implementação da abstração em tempo de execução.
 - Permite a criação de hierarquias independentes para abstração e implementação de forma que ao estender uma não necessite alterar a outra, respeitando o princípio aberto-fechado  
 - Pode ser usado quando necessitamos estender a classe em mais de uma dimensão, nestes casos podemos extrair uma dessas dimensões para outra hierarquia e usar o bridge para estruturar.
   - No caso em exemplo, poderíamos estender "residence" e criar apartamento.
@@ -111,8 +122,9 @@ how to assemble objects and classes to generate larger structures while keeping 
   - Classes de implementação (outro lado da "ponte")
     - ISecurity: Interface das classes de implementação
     - GuardDog, MmaFighter: Implementações da interface ISecurity
-    
+
 ## Composite
+
 - Nome do exemplo: RunCompositeSample
 - Útil quando o modelo da aplicação deve poder ser representado em árvore, pois sua estrutura aparenta uma árvore de cabeça para baixo
 - A principal intenção é permitir ao código cliente trabalhar com objetos simples e compostos utilizando da mesma interface, sem necessidade de saber o tipo do objeto e qual sua profundidade na hierarquia. Reduz a complexidade do código cliente.
@@ -121,11 +133,11 @@ how to assemble objects and classes to generate larger structures while keeping 
 - Se realizar o tratamento dos filhos na interface comum "Component", pode acabar quebrando o princípio da segregação de interface
 - Os filhos, podes ter referência a classe pai para facilitar percorrer a árvore.
 - Estrutura
-  - Component: 
+  - Component:
     - Interface de conhecimento do cliente, compartilhada por todos os objetos da árvore
     - Normalmente difícil de ser definido e acaba contendo muitos métodos e sendo mais genérico, para poder servir como interface única para composites e leafs.
   - Leaf: O objeto que não pode conter filhos
-  - Composite: 
+  - Composite:
     - O objeto que pode conter filhos (leafs, composites) e pode ser utilizado como filho em outros composites
     - Passa a solicitação para os filhos podendo executar operações antes/depois do repasse de acordo com a necessidade.
 - Exemplo:
@@ -141,6 +153,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - Window: Classe concreta
 
 ## Decorator
+
 - Nome do exemplo: RunDecoratorSample
 - Permite estender um objeto para adicionar para ele novas responsabilidades em tempo de execução, tornando-se uma alternativa a extensão de objetos via herança
 - Usa agregação e recursividade
@@ -156,7 +169,7 @@ how to assemble objects and classes to generate larger structures while keeping 
   - O objeto quando decorado não tem a mesma referência de memória do objeto sem decorar
   - Pode ser difícil implementar sem depender da ordem na pilha dos decoradores
 - Estrutura
-  - Component 
+  - Component
     - Interface comum ao objeto que será envolvido e o "Decorator" deve ser simples
   - ConcreteComponent: O objeto que implementa "Component" e pode ser decorado, necessário já ter um comportamento padrão
   - Decorator
@@ -174,6 +187,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - TrailerDecorator: Decorador concreto
 
 ## Facade
+
 - Nome do exemplo: RunFacadeSample
 - Fornece uma interface simples para subsistemas, bibliotecas, frameworks para tornar mais fácil o seu uso.
   - O cliente não precisa mais saber quais classes, métodos e em qual ordem deve chama-los, basta utilizar a interface do "facade", reduzindo assim sua complexidade.
@@ -191,7 +205,7 @@ how to assemble objects and classes to generate larger structures while keeping 
 - Estrutura
   - IFacade: interface para uso dos clientes
   - FacadeConcreto: implementação dos IFacade que encapsula as dependência e funcionalidades do subsistema para uso do cliente
-  - Subsystem class Class: 
+  - Subsystem class Class:
     - Implementam a funcionalidade do subsistema
     - Se encarregam do trabalho passado para elas pelo facade
 - Exemplo
@@ -203,6 +217,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - OfficerService: Subsystem class
 
 ## Flyweight
+
 - Nome do exemplo: RunFlyweightSample
 - O padrão usa de compartilhamento para suportar eficientemente grandes quantidades de objetos, mantendo baixo o uso de memória RAM
   - É um padrão somente focado para otimização do uso de memória RAM  
@@ -210,7 +225,7 @@ how to assemble objects and classes to generate larger structures while keeping 
 - Somente usar quando
   - A aplicação tem um grande número de objetos, gerando um custo alto de armazenamento &&
   - A maioria dos estados(campos) destes objetos podem se tornar extrínsecas
-- Divide os campos do objeto que irá se tornar flyweight em dois tipos (intrínsecos e extrínsecos) 
+- Divide os campos do objeto que irá se tornar flyweight em dois tipos (intrínsecos e extrínsecos)
   - Intrínseco: São independentes do contexto no qual o objeto está inserido, são imutáveis, são armazenados no flyweight
   - Extrínseco: Variam com o contexto do flyweight, podem ser alterados e por isso não podem ser compartilhados por isso são retirados dos objetos flyweight
 - O padrão sugeri para de armazenar dados extrínsecos dentro do objeto, invés disso, você deve passar esses dados para os métodos específicos que dependam deles deixando somente o intrínseco no objeto
@@ -234,6 +249,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - Shed: container dos lamps
 
 ## Proxy
+
 - Nome do exemplo: RunProxySample
 - Fornece um substituto ou espaço reservado para outro objeto controlar o acesso a esse objeto.  
   - Focado no controle de acesso a determinado objeto
@@ -251,7 +267,7 @@ how to assemble objects and classes to generate larger structures while keeping 
       - Proxy Remoto: Usado para uma representação local de um objeto que está em um servidor remoto. Encapsula a requisição parâmetros para realizar a requisição ao objeto real que está em outro servidor
       - Proxy Virtual: Focado na inicialização preguiçosa do objeto, pode conter campos de maneira a adiar a inicialização do objeto
       - Smart Reference: um proxy para adição de comportamentos adicionais, dentre os usos mais comuns:  pode ser usado para caches, logs, bloqueio do recurso.
-  - ISubject: Interface comum ao proxy e ao objeto real (ambos devem implementa-la), pode ser usada em qualquer lugar que o real objeto for usado    
+  - ISubject: Interface comum ao proxy e ao objeto real (ambos devem implementa-la), pode ser usada em qualquer lugar que o real objeto for usado
   - ConcreteSubject: Implementa "ISubject", o objeto real que será representado pelo proxy
 - Exemplo
   - ConcreteSubject: Storage
@@ -259,12 +275,15 @@ how to assemble objects and classes to generate larger structures while keeping 
   - Proxy: StorageProxy - adicionando comportamentos de logs, checagem de bloqueio, controle de inicialização preguiçosa
 
 # Behavioral Patterns
+
 Se preocupam com o algoritmo e com a atribuição de responsabilidades entre os objetos
 
 Descrevem padrões de objeto, classes e o padrão de comunicação entre eles
 
 Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
+
 ## Chain of Responsibility
+
 - Nome do exemplo: RunChainOfResponsabilitySample
 - Lida com uma corrente de handler, onde cada handler decide deve processar a requisição ou passa para o próximo handler na corrente
   - Passa um pedido sequencialmente ao longo de uma corrente dinâmica de potenciais destinatários até que um deles atua no pedido
@@ -284,24 +303,25 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - Handler: Abstração comum aos handlers concretos
     - Normalmente só tem o método executar, o método de vínculo com o próximo handler da Chain e sua referência.
   - ConcreteHandler: implementa a abstração handler
-    - Contém o código real que irá ser processado 
+    - Contém o código real que irá ser processado
     - Trata as requisições pelo qual é responsável, passa ao próximo elo caso não consiga
 - Exemplo
   - Handler
-    - IHandler: Interface comum aos handlers concretos 
+    - IHandler: Interface comum aos handlers concretos
     - Handler: Classe Abstrata comum aos handlers concretos, tem a referência ao próximo e implementação básica para os métodos do IHandler
   - ConcreteHandler
-    -  StartedHandler: Handler concreto
-    -  MiddleHandler: Handler concreto 
-    -  FinishedHandler: Handler concreto
+    - StartedHandler: Handler concreto
+    - MiddleHandler: Handler concreto
+    - FinishedHandler: Handler concreto
 
 ## Command
+
 - Nome do exemplo: RunCommandSample
 - O Command é um padrão de projeto comportamental que encapsula uma solicitação como um objeto, desta forma permitindo:
-  -  Parametrizar clientes com diferentes solicitações
-  -  Enfileirar: Colocar operações em fila, agendar sua execução ou executá-las remotamente
-  -  Registrar logs de solicitações
-  -  Meios para realizar o Desfazer/refazer das operações  
+  - Parametrizar clientes com diferentes solicitações
+  - Enfileirar: Colocar operações em fila, agendar sua execução ou executá-las remotamente
+  - Registrar logs de solicitações
+  - Meios para realizar o Desfazer/refazer das operações  
 - O comando deve ser capaz ou, pré-configurado para obter os parâmetros por conta própria.
 - Criasse uma nova classe comando para cada possível operação e liga ao remetente dependendo do comportamento desejado.
 - Os comandos se tornam uma camada intermédia conveniente que reduz o acoplamento entre as camadas GUI e de lógica do negócio
@@ -315,7 +335,7 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - ConcreteCommand: Define um vínculo entre um objeto receiver e uma operação
     - Implementa o método do command delegando as respectivas operações no reciever
   - Invoker: Pede ao comando para realizar a operação
-    - Pode está associado a mais de 1 comando    
+    - Pode está associado a mais de 1 comando
   - Receiver: Contém a lógica do negócio
     - Sabe como realizar as operações vinculadas ao pedido
     - Qualquer classe pode funcionar como um reciever
@@ -326,6 +346,7 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - Receiver: PromotionService
 
 ## Interpreter
+
 - Nome do exemplo: RunInterpreterSample
 - Dada uma linguagem, descreve como definir uma representação para a sua gramatica juntamente com um interpretador que usa a representação para interpretar sentenças dessa linguagem
 - Deve ser usado quando tem uma linguagem simples para interpretar e for possível representar sentenças da linguagem como arvores sintáticas abstratas
@@ -347,13 +368,14 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - AbstractExpression
     - IAbstractExpression: Interface como método “Interpret”
     - AbstractExpression: Abstração - Usada para centralizar alguns dados comuns a todos os nós
-  - TerminalExpression: 
+  - TerminalExpression:
     - HundredExpression: Traduz os símbolos da casa das centenas
     - OneExpression: Traduz os símbolos da casa das unidades
     - TenExpression: Traduz os símbolos da casa das dezenas
   - Context: Context
   
 ## Iterator
+
 - Nome do exemplo: RunIteratorSample
 - A ideia principal do padrão é extrair o comportamento de travessia de uma coleção para um objeto separado chamado um "iterator"
   - Permite percorrer os elementos de um objeto agregado sequencialmente sem expor sua representação subjacente (lista, pilha, árvore, etc.)
@@ -368,22 +390,23 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - Interno: a interface do iterator fica mais simples e o cliente pode chama só uma operação que consolida as supracitadas dentro iterator, com isso o cliente perde um pouco de controle sobre o percurso
 - Usar quando
   - Quer acessar o conteúdo das coleções sem acopla-las no código cliente, protegendo a coleção das interações do cliente e escondendo sua complexidade
-  - Quer ter suporte a múltiplos percursos 
+  - Quer ter suporte a múltiplos percursos
 - Estrutura
   - Iterator: Interface que declara as operações necessárias para percorrer uma coleção: buscar o próximo elemento, pegar a posição atual, recomeçar a iteração, etc.
-   - ConcreteIterator: Implementam algoritmos específicos para percorrer uma coleção
-     - Responsável por monitorar todo o progresso da travessia por conta própria
-     - Pode ter mais operações para ajudá-lo no percurso além das recorrentes (First, Next, IsDone, CurrentItem)
-   - Aggregate: Interface das coleções
-     - Descreve os métodos para obter os integradores
-   - ConcreteAggregate: Retorna a instância do ConcreteIterator apropriada para a coleção
- - Exemplo
-   - Iterator: IIterator
-   - ConcreteIterator: ImparIterator
-   - Aggregate: IAggregate
-   - ConcreteAggregate: FruitAggregate
+  - ConcreteIterator: Implementam algoritmos específicos para percorrer uma coleção
+    - Responsável por monitorar todo o progresso da travessia por conta própria
+    - Pode ter mais operações para ajudá-lo no percurso além das recorrentes (First, Next, IsDone, CurrentItem)
+  - Aggregate: Interface das coleções
+    - Descreve os métodos para obter os integradores
+  - ConcreteAggregate: Retorna a instância do ConcreteIterator apropriada para a coleção
+- Exemplo
+  - Iterator: IIterator
+  - ConcreteIterator: ImparIterator
+  - Aggregate: IAggregate
+  - ConcreteAggregate: FruitAggregate
 
 ## Mediator
+
 - Nome do exemplo: RunMediatorSample
 - Define um objeto (Mediator) que encapsula a forma como um conjunto de objetos interagem entre si
   - Faz com que todas as comunicações diretas entre os objetos sejam direcionadas para o mediator tornando-as indiretas
@@ -402,17 +425,18 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - ConcreteMediator: Implementam a interface Mediator
     - Encapsula as relações entre vários componentes
     - Implementa o comportamento cooperativo entre as classes "Colleagues", mantém referência a todos os objetos que gerencia
-- Exemplo - Está funcional porém ainda é conceitual quando pensar em algo legal para ele eu subo
-    - Colleague: Colleague1, Colleague2, Colleague3
-    - Mediator: IMediator
-    - ConcreteMediator: ConcreteMediator
+- Exemplo
+  - Colleague: Colleague1, Colleague2, Colleague3
+  - Mediator: IMediator
+  - ConcreteMediator: ConcreteMediator
 
 ## Memento
+
 - Nome do exemplo: RunMementoSample
 - Permite capturar e externalizar o estado interno de um objeto sem feri seu encapsulamento (sem revelar os detalhes de sua implementação), permitindo ao objeto voltar a este estado caso necessário
 - Armazena a cópia do estado de um objeto em outro objeto especial chamado memento
   - O conteúdo do memento só é acessível ao objeto que o construiu  
-  - Os outros objetos (inclusive o cuidador) usam uma interface limitada com acesso somente aos metadados para identificação do memento, não tem acesso aos dados internos do estado armazenado 
+  - Os outros objetos (inclusive o cuidador) usam uma interface limitada com acesso somente aos metadados para identificação do memento, não tem acesso aos dados internos do estado armazenado
 - Toda ação que mude o estado do objeto e deseje ser reversível, deve salvar o estado e no "memento" e armazena-lo em um cuidador que criar como um histórico para recuperação futura.
 - O padrão delega a criação dos snapshots para o próprio objeto originador que decide o que colocará no memento.
   - Evita a exposição de informações que somente o originador deveria acessar
@@ -422,7 +446,7 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - O cuidador deve acompanhar o ciclo de vida do objeto originador para remover mementos obsoletos
 - Estrutura
   - Memento: Armazena o estado interno do objeto originador, imutável
-  - Originator: O objeto que pode ter seu estado restaurado 
+  - Originator: O objeto que pode ter seu estado restaurado
     - Cria o memento contendo um retrato do seu status atual quando for necessário
     - Consegue restaurar seu estado fazendo uso do memento
   - Caretaker: Responsável pela custódia dos mementos par quando forem necessários
@@ -434,6 +458,7 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - Caretaker: MementoManager
 
 ## Observer
+
 - Nome do exemplo: RunObserverSample
 - Permite que um objeto notifique outros objetos sobre alterações em seu estado
   - Cria um mecanismo de assinatura para que a alteração de um objeto "subject" notifique múltiplos objetos dependentes que irão se atualizar automaticamente
@@ -442,7 +467,7 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - Os subjects fornecem a interface para adicionar e remover assinantes a qualquer momento
 - Os observadores têm a responsabilidade de tratar ou ignorar uma notificação, podem acompanhar mais de um subject ao mesmo tempo
 - A notificação de mudança pode ser disparada pelo subject ou pelo ciente, vai depender do contexto
-- Útil quando 
+- Útil quando
   - Mudanças no estado de um objeto precisem mudar outros objetos e estes são desconhecidos ou mudam dinamicamente
   - Quando um observer precisar acompanhar um subject por um período definido de tempo
 - Em ambientes de relacionamentos complexos entre Observers e Subjects pode ter uma classe Change Manager para diminuir o trabalho necessário para que um observador reflita as mudanças de um subject
@@ -463,6 +488,7 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - ConcreteObserver: Separation
 
 ## State
+
 - Nome do exemplo: RunStateSample
 - Permite que um objeto altere seu comportamento quando seu estado interno muda. O objeto aparecerá para alterar sua classe.
   - Altera o comportamento quando seu estado interno é alterado
@@ -489,6 +515,7 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - ConcreteState: Solid ,Liquid, Gas
 
 ## Strategy
+
 - Nome do exemplo: RunStrategySample
 - Encapsula os possíveis algoritmos em uma classe strategy permitindo que variem independentes dos clientes que a utilizam
 - O contexto delega para a instância da estratégia que está vinculado para executar o algoritmo
@@ -508,3 +535,71 @@ Podem ser de Classe (Template Method, Interpreter) e de Objeto (Os demais)
   - Context: VacationService
   - Strategy: IStrategy
   - ConcreteStrategy: TimeInCompanyStrategy, FastToReturnStrategy, LongestOverdueStrategy
+
+## Template Method
+
+- Nome do exemplo: RunTemplateMethodSample
+- Sugere criar um método na superclasse (template method) com um esqueleto para o algoritmo dividindo-o em uma série de etapas e permite as subclasses estender essas etapas.
+  - Declara métodos que agem como etapas de um algoritmo
+  - Permite que subclasses redefinam certas etapas de um algoritmo sem mudar a estrutura do mesmo
+- Ajuda a reduzir a duplicação de código
+- Coloca na superclasse os comportamentos invariantes dos métodos que forem possíveis e as subclasses só implantam o comportamento variável
+- Pode usar hooks para os comportamentos opcionais
+  - Normalmente métodos vazios na superclasse que podem ser sobrescritos pelas subclasses que necessitam estende-los
+- Template Method pode ter
+  - Operações concretas e concretas de abstracts: métodos concretos virtuais ou não, chamados ou implementados na superclasse
+  - Operações primitivas: métodos abstratos devem ser sobrescritos
+  - Hooks: métodos opcionais vazios na superclasse, mas podem ser sobrescrito nas subclasses
+- Atenção:
+  - Se tiver muitas etapas pode ser difícil manter o código
+  - É uma extensão de comportamento estática pois está vinculada a herança e não pode ser mudado em tempo de execução
+- Estrutura
+  - AbstractClass: Define a estrutura do algoritmo dentro do template método, seu esqueleto
+    - Define os métodos que compõem o template método (primitivos, concretos, hooks)
+    - Contém a implementação dos comportamentos que são invariantes
+  - ConcreteClass: Implementa as etapas (primitivas, hooks, virtuais) para ficar consistente com a sua tratativa especifica para o algoritmo
+- Exemplo
+  - AbstractClass: AbstractClass
+  - ConcreteClass: Concrete1, Concrete2
+
+## Visitor
+
+- Nome do exemplo: RunVisitorSample
+- Permite definir uma nova operação para uma hierarquia de classe sem mudar o código existente dessas classes
+  - Permite separar algoritmos dos objetos nos quais eles operam
+  - Representa uma operação a ser executada nos elementos de uma estrutura de objetos
+- Cada elemento decide qual método do visitor irá usar
+  - Os métodos do visitor conhecem as classes concretas dos elementos e são especializados para trabalhar com eles, cada classe concreta de elemento chama o método especifico para lidar com ele
+- Ajuda a manter o código das classes dos elementos limpos de comportamentos auxiliares
+  - Esses comportamentos são movidos para os visitors, deixando a classe original independente das operações que se aplicam a ela
+- O visitor pode manter o método vazio para elementos que julgar que não faz sentido ter o comportamento
+- Usa o double dispatch pois o método a ser executado depende a instância do elemento e do visitor
+- Valido quando for necessário executar uma operação em todos os elementos de uma estrutura de objetos mesmo que sejam de classes diferentes
+- Visitor torna fácil a adição de novas operações na estrutura
+  - Podemos estender a hierarquia elemento simplesmente adicionado mais um concrete vistor invés de alterar toda as várias classes do elemento
+- Valido quando você não quer poluir o elemento com novas implementações distintas e não relacionadas  
+- Cada Visitor concrete define operações diferentes para a mesma estrutura, cada um com sua finalidade especifica
+  - Mantem as operações relacionadas juntas na mesma classe visitor
+- Permite criar duas estruturas hierárquicas uma para os elementos e outra para os visitor
+- Deve aplicar o concrete visitor e todos os elementos da estrutura
+- é necessário um Visitor abstrato para cada estrutura de dados
+- Atenção:
+  - Se as classes da estrutura de elementos mudam com frequência e complicado manter o visitor
+    - Tem que atualizar todos os visitantes quando uma nova classe da estrutura é adicionada
+    - Pensar antes de usar qual a alteração mais provável do algoritmo aplicado a estrutura ou das classes que a compõem
+- Estrutura:
+  - Element: Interface que declara um método para “aceitar” visitantes através da interface deles
+  - ConcreteElement: implementar element
+    - Direciona a chamada para o método do visitante apropriado que corresponde com a atual classe elemento,passando a si mesmo como parâmetro.
+  - Visitor: Interface que declara o conjunto de métodos visitantes para cada elemento da estrutura de objetos,esses métodos devem receber os objetos concretos da estrutura
+  - ConcreteVisitor: implementa o comportamento para cada concrete element seguindo sua interface
+    - Pode armazenar estado local para ser acumulado à medida que percorre a estrutura, e pode ser usado comocontexto nas chamadas
+  - ObjectStructure: A estrutura de objetos podendo ser “composite” ou coleções
+    - Pode enumerar seus objetos
+    - Pode ter interfaces de alto nível para uso dos visitor
+- Exemplo:
+  - Element: IElement
+  - ConcreteElement: ConcreteEl1, ConcreteEl2, ConcreteEl3
+  - Visitor: IVisitor
+  - ConcreteVisitor: ConcreteVisitor1, ConcreteVisitor2
+  - ObjectStructure: objectStructure
