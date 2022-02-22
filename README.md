@@ -8,7 +8,6 @@ All content is fictitious for study purposes only
 
 - DesignPatternSamples.ConsoleAPP
 - Patterns index is there
-- Samples client is here
 
 # Creational Patterns
 
