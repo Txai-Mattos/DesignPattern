@@ -138,7 +138,7 @@ how to assemble objects and classes to generate larger structures while keeping 
     - ISecurity: Interface das classes de implementação
     - GuardDog, MmaFighter: Implementações da interface ISecurity
 
-## >Composite
+## Composite
 
 - Nome do exemplo: RunCompositeSample
 - Útil quando o modelo da aplicação deve poder ser representado em árvore, pois sua estrutura aparenta uma árvore de cabeça para baixo
